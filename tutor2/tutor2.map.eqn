@@ -1,0 +1,939 @@
+-- Copyright (C) 1991-2007 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--B1_LCD_RS is LCD_Display:inst1|LCD_RS
+B1_LCD_RS = DFFEAS(B1L135, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_LCD_E is LCD_Display:inst1|LCD_E
+B1_LCD_E = DFFEAS(B1L98, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_LCD_RW_INT is LCD_Display:inst1|LCD_RW_INT
+B1_LCD_RW_INT = DFFEAS(VCC, B1_CLK_400HZ, SW8,  , B1L100,  ,  ,  ,  );
+
+
+--B1_state.print_string is LCD_Display:inst1|state.print_string
+B1_state.print_string = DFFEAS(B1L186, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.drop_lcd_e is LCD_Display:inst1|state.drop_lcd_e
+B1_state.drop_lcd_e = DFFEAS(B1L100, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.hold is LCD_Display:inst1|state.hold
+B1_state.hold = DFFEAS(B1_state.drop_lcd_e, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L135 is LCD_Display:inst1|Selector1~38
+B1L135 = B1_state.print_string # B1_LCD_RS & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1_CLK_400HZ is LCD_Display:inst1|CLK_400HZ
+B1_CLK_400HZ = DFFEAS(B1L20, CLK_48Mhz,  ,  ,  ,  ,  , !SW8,  );
+
+
+--B1L98 is LCD_Display:inst1|LCD_E~9
+B1L98 = B1_state.hold & (B1_LCD_E) # !B1_state.hold & B1_state.drop_lcd_e;
+
+
+--B1L100 is LCD_Display:inst1|LCD_RS~0
+B1L100 = !B1_state.drop_lcd_e & !B1_state.hold;
+
+
+--B1_next_command.print_string is LCD_Display:inst1|next_command.print_string
+B1_next_command.print_string = DFFEAS(B1L161, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L186 is LCD_Display:inst1|state~146
+B1L186 = B1_state.hold & B1_next_command.print_string;
+
+
+--B1_CLK_COUNT_400HZ[16] is LCD_Display:inst1|CLK_COUNT_400HZ[16]
+B1_CLK_COUNT_400HZ[16] = DFFEAS(B1L71, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[17] is LCD_Display:inst1|CLK_COUNT_400HZ[17]
+B1_CLK_COUNT_400HZ[17] = DFFEAS(B1L74, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[18] is LCD_Display:inst1|CLK_COUNT_400HZ[18]
+B1_CLK_COUNT_400HZ[18] = DFFEAS(B1L78, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[19] is LCD_Display:inst1|CLK_COUNT_400HZ[19]
+B1_CLK_COUNT_400HZ[19] = DFFEAS(B1L81, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L102 is LCD_Display:inst1|LessThan0~261
+B1L102 = !B1_CLK_COUNT_400HZ[16] & !B1_CLK_COUNT_400HZ[17] & !B1_CLK_COUNT_400HZ[18] & !B1_CLK_COUNT_400HZ[19];
+
+
+--B1_CLK_COUNT_400HZ[13] is LCD_Display:inst1|CLK_COUNT_400HZ[13]
+B1_CLK_COUNT_400HZ[13] = DFFEAS(B1L62, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[14] is LCD_Display:inst1|CLK_COUNT_400HZ[14]
+B1_CLK_COUNT_400HZ[14] = DFFEAS(B1L65, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[15] is LCD_Display:inst1|CLK_COUNT_400HZ[15]
+B1_CLK_COUNT_400HZ[15] = DFFEAS(B1L68, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L103 is LCD_Display:inst1|LessThan0~262
+B1L103 = !B1_CLK_COUNT_400HZ[15] # !B1_CLK_COUNT_400HZ[14] # !B1_CLK_COUNT_400HZ[13];
+
+
+--B1_CLK_COUNT_400HZ[5] is LCD_Display:inst1|CLK_COUNT_400HZ[5]
+B1_CLK_COUNT_400HZ[5] = DFFEAS(B1L38, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[6] is LCD_Display:inst1|CLK_COUNT_400HZ[6]
+B1_CLK_COUNT_400HZ[6] = DFFEAS(B1L41, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[7] is LCD_Display:inst1|CLK_COUNT_400HZ[7]
+B1_CLK_COUNT_400HZ[7] = DFFEAS(B1L44, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[8] is LCD_Display:inst1|CLK_COUNT_400HZ[8]
+B1_CLK_COUNT_400HZ[8] = DFFEAS(B1L47, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L104 is LCD_Display:inst1|LessThan0~263
+B1L104 = !B1_CLK_COUNT_400HZ[7] & !B1_CLK_COUNT_400HZ[8] & (!B1_CLK_COUNT_400HZ[6] # !B1_CLK_COUNT_400HZ[5]);
+
+
+--B1_CLK_COUNT_400HZ[9] is LCD_Display:inst1|CLK_COUNT_400HZ[9]
+B1_CLK_COUNT_400HZ[9] = DFFEAS(B1L50, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[10] is LCD_Display:inst1|CLK_COUNT_400HZ[10]
+B1_CLK_COUNT_400HZ[10] = DFFEAS(B1L53, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[11] is LCD_Display:inst1|CLK_COUNT_400HZ[11]
+B1_CLK_COUNT_400HZ[11] = DFFEAS(B1L56, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L105 is LCD_Display:inst1|LessThan0~264
+B1L105 = !B1_CLK_COUNT_400HZ[10] & (B1L104 # !B1_CLK_COUNT_400HZ[9]) # !B1_CLK_COUNT_400HZ[11];
+
+
+--B1_CLK_COUNT_400HZ[12] is LCD_Display:inst1|CLK_COUNT_400HZ[12]
+B1_CLK_COUNT_400HZ[12] = DFFEAS(B1L59, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L106 is LCD_Display:inst1|LessThan0~265
+B1L106 = B1L102 & (B1L103 # B1L105 & !B1_CLK_COUNT_400HZ[12]);
+
+
+--B1L20 is LCD_Display:inst1|CLK_400HZ~100
+B1L20 = B1_CLK_400HZ $ !B1L106;
+
+
+--B1_DATA_BUS_VALUE[7] is LCD_Display:inst1|DATA_BUS_VALUE[7]
+B1_DATA_BUS_VALUE[7] = DFFEAS(B1L136, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[6] is LCD_Display:inst1|DATA_BUS_VALUE[6]
+B1_DATA_BUS_VALUE[6] = DFFEAS(B1L138, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[5] is LCD_Display:inst1|DATA_BUS_VALUE[5]
+B1_DATA_BUS_VALUE[5] = DFFEAS(B1L142, B1_CLK_400HZ, SW8,  , B1L100,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[4] is LCD_Display:inst1|DATA_BUS_VALUE[4]
+B1_DATA_BUS_VALUE[4] = DFFEAS(B1L144, B1_CLK_400HZ, SW8,  , B1L100,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[3] is LCD_Display:inst1|DATA_BUS_VALUE[3]
+B1_DATA_BUS_VALUE[3] = DFFEAS(B1L148, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[2] is LCD_Display:inst1|DATA_BUS_VALUE[2]
+B1_DATA_BUS_VALUE[2] = DFFEAS(B1L151, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[1] is LCD_Display:inst1|DATA_BUS_VALUE[1]
+B1_DATA_BUS_VALUE[1] = DFFEAS(B1L153, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_DATA_BUS_VALUE[0] is LCD_Display:inst1|DATA_BUS_VALUE[0]
+B1_DATA_BUS_VALUE[0] = DFFEAS(B1L156, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_CHAR_COUNT[1] is LCD_Display:inst1|CHAR_COUNT[1]
+B1_CHAR_COUNT[1] = DFFEAS(B1L8, B1_CLK_400HZ,  ,  , SW8, B1L171,  ,  , !B1_state.print_string);
+
+
+--B1_CHAR_COUNT[2] is LCD_Display:inst1|CHAR_COUNT[2]
+B1_CHAR_COUNT[2] = DFFEAS(B1L11, B1_CLK_400HZ,  ,  , SW8, B1L170,  ,  , !B1_state.print_string);
+
+
+--B1L111 is LCD_Display:inst1|Mux3~313
+B1L111 = B1_CHAR_COUNT[1] & B1_CHAR_COUNT[2];
+
+
+--B1_CHAR_COUNT[0] is LCD_Display:inst1|CHAR_COUNT[0]
+B1_CHAR_COUNT[0] = DFFEAS(B1L5, B1_CLK_400HZ,  ,  , SW8, B1L172,  ,  , !B1_state.print_string);
+
+
+--B1_CHAR_COUNT[3] is LCD_Display:inst1|CHAR_COUNT[3]
+B1_CHAR_COUNT[3] = DFFEAS(B1L14, B1_CLK_400HZ,  ,  , SW8, B1L169,  ,  , !B1_state.print_string);
+
+
+--B1_CHAR_COUNT[4] is LCD_Display:inst1|CHAR_COUNT[4]
+B1_CHAR_COUNT[4] = DFFEAS(B1L17, B1_CLK_400HZ,  ,  , SW8, B1L168,  ,  , !B1_state.print_string);
+
+
+--B1L95 is LCD_Display:inst1|Equal2~35
+B1L95 = B1L111 & B1_CHAR_COUNT[0] & B1_CHAR_COUNT[3] & !B1_CHAR_COUNT[4];
+
+
+--B1L96 is LCD_Display:inst1|Equal3~22
+B1L96 = B1_CHAR_COUNT[4] & B1L111 & B1_CHAR_COUNT[0] & B1_CHAR_COUNT[3];
+
+
+--B1L160 is LCD_Display:inst1|Selector15~96
+B1L160 = B1_state.print_string & (B1L95 $ !B1L96);
+
+
+--B1_state.mode_set is LCD_Display:inst1|state.mode_set
+B1_state.mode_set = DFFEAS(B1L187, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.line2 is LCD_Display:inst1|state.line2
+B1_state.line2 = DFFEAS(B1L188, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.return_home is LCD_Display:inst1|state.return_home
+B1_state.return_home = DFFEAS(B1L189, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L139 is LCD_Display:inst1|Selector4~266
+B1L139 = !B1_state.mode_set & !B1_state.line2 & !B1_state.return_home;
+
+
+--B1L161 is LCD_Display:inst1|Selector15~97
+B1L161 = B1L160 # !B1L100 & B1_next_command.print_string # !B1L139;
+
+
+--B1_CLK_COUNT_400HZ[4] is LCD_Display:inst1|CLK_COUNT_400HZ[4]
+B1_CLK_COUNT_400HZ[4] = DFFEAS(B1L35, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[3] is LCD_Display:inst1|CLK_COUNT_400HZ[3]
+B1_CLK_COUNT_400HZ[3] = DFFEAS(B1L32, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[2] is LCD_Display:inst1|CLK_COUNT_400HZ[2]
+B1_CLK_COUNT_400HZ[2] = DFFEAS(B1L29, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[1] is LCD_Display:inst1|CLK_COUNT_400HZ[1]
+B1_CLK_COUNT_400HZ[1] = DFFEAS(B1L26, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1_CLK_COUNT_400HZ[0] is LCD_Display:inst1|CLK_COUNT_400HZ[0]
+B1_CLK_COUNT_400HZ[0] = DFFEAS(B1L23, CLK_48Mhz,  ,  ,  ,  ,  , B1L75,  );
+
+
+--B1L23 is LCD_Display:inst1|CLK_COUNT_400HZ[0]~206
+B1L23 = B1_CLK_COUNT_400HZ[0] $ VCC;
+
+--B1L24 is LCD_Display:inst1|CLK_COUNT_400HZ[0]~299
+B1L24 = CARRY(B1_CLK_COUNT_400HZ[0]);
+
+
+--B1L26 is LCD_Display:inst1|CLK_COUNT_400HZ[1]~205
+B1L26 = B1_CLK_COUNT_400HZ[1] & !B1L24 # !B1_CLK_COUNT_400HZ[1] & (B1L24 # GND);
+
+--B1L27 is LCD_Display:inst1|CLK_COUNT_400HZ[1]~300
+B1L27 = CARRY(!B1L24 # !B1_CLK_COUNT_400HZ[1]);
+
+
+--B1L29 is LCD_Display:inst1|CLK_COUNT_400HZ[2]~204
+B1L29 = B1_CLK_COUNT_400HZ[2] & (B1L27 $ GND) # !B1_CLK_COUNT_400HZ[2] & !B1L27 & VCC;
+
+--B1L30 is LCD_Display:inst1|CLK_COUNT_400HZ[2]~301
+B1L30 = CARRY(B1_CLK_COUNT_400HZ[2] & !B1L27);
+
+
+--B1L32 is LCD_Display:inst1|CLK_COUNT_400HZ[3]~203
+B1L32 = B1_CLK_COUNT_400HZ[3] & !B1L30 # !B1_CLK_COUNT_400HZ[3] & (B1L30 # GND);
+
+--B1L33 is LCD_Display:inst1|CLK_COUNT_400HZ[3]~302
+B1L33 = CARRY(!B1L30 # !B1_CLK_COUNT_400HZ[3]);
+
+
+--B1L35 is LCD_Display:inst1|CLK_COUNT_400HZ[4]~202
+B1L35 = B1_CLK_COUNT_400HZ[4] & (B1L33 $ GND) # !B1_CLK_COUNT_400HZ[4] & !B1L33 & VCC;
+
+--B1L36 is LCD_Display:inst1|CLK_COUNT_400HZ[4]~303
+B1L36 = CARRY(B1_CLK_COUNT_400HZ[4] & !B1L33);
+
+
+--B1L38 is LCD_Display:inst1|CLK_COUNT_400HZ[5]~200
+B1L38 = B1_CLK_COUNT_400HZ[5] & !B1L36 # !B1_CLK_COUNT_400HZ[5] & (B1L36 # GND);
+
+--B1L39 is LCD_Display:inst1|CLK_COUNT_400HZ[5]~304
+B1L39 = CARRY(!B1L36 # !B1_CLK_COUNT_400HZ[5]);
+
+
+--B1L41 is LCD_Display:inst1|CLK_COUNT_400HZ[6]~201
+B1L41 = B1_CLK_COUNT_400HZ[6] & (B1L39 $ GND) # !B1_CLK_COUNT_400HZ[6] & !B1L39 & VCC;
+
+--B1L42 is LCD_Display:inst1|CLK_COUNT_400HZ[6]~305
+B1L42 = CARRY(B1_CLK_COUNT_400HZ[6] & !B1L39);
+
+
+--B1L44 is LCD_Display:inst1|CLK_COUNT_400HZ[7]~198
+B1L44 = B1_CLK_COUNT_400HZ[7] & !B1L42 # !B1_CLK_COUNT_400HZ[7] & (B1L42 # GND);
+
+--B1L45 is LCD_Display:inst1|CLK_COUNT_400HZ[7]~306
+B1L45 = CARRY(!B1L42 # !B1_CLK_COUNT_400HZ[7]);
+
+
+--B1L47 is LCD_Display:inst1|CLK_COUNT_400HZ[8]~199
+B1L47 = B1_CLK_COUNT_400HZ[8] & (B1L45 $ GND) # !B1_CLK_COUNT_400HZ[8] & !B1L45 & VCC;
+
+--B1L48 is LCD_Display:inst1|CLK_COUNT_400HZ[8]~307
+B1L48 = CARRY(B1_CLK_COUNT_400HZ[8] & !B1L45);
+
+
+--B1L50 is LCD_Display:inst1|CLK_COUNT_400HZ[9]~197
+B1L50 = B1_CLK_COUNT_400HZ[9] & !B1L48 # !B1_CLK_COUNT_400HZ[9] & (B1L48 # GND);
+
+--B1L51 is LCD_Display:inst1|CLK_COUNT_400HZ[9]~308
+B1L51 = CARRY(!B1L48 # !B1_CLK_COUNT_400HZ[9]);
+
+
+--B1L53 is LCD_Display:inst1|CLK_COUNT_400HZ[10]~196
+B1L53 = B1_CLK_COUNT_400HZ[10] & (B1L51 $ GND) # !B1_CLK_COUNT_400HZ[10] & !B1L51 & VCC;
+
+--B1L54 is LCD_Display:inst1|CLK_COUNT_400HZ[10]~309
+B1L54 = CARRY(B1_CLK_COUNT_400HZ[10] & !B1L51);
+
+
+--B1L56 is LCD_Display:inst1|CLK_COUNT_400HZ[11]~195
+B1L56 = B1_CLK_COUNT_400HZ[11] & !B1L54 # !B1_CLK_COUNT_400HZ[11] & (B1L54 # GND);
+
+--B1L57 is LCD_Display:inst1|CLK_COUNT_400HZ[11]~310
+B1L57 = CARRY(!B1L54 # !B1_CLK_COUNT_400HZ[11]);
+
+
+--B1L59 is LCD_Display:inst1|CLK_COUNT_400HZ[12]~194
+B1L59 = B1_CLK_COUNT_400HZ[12] & (B1L57 $ GND) # !B1_CLK_COUNT_400HZ[12] & !B1L57 & VCC;
+
+--B1L60 is LCD_Display:inst1|CLK_COUNT_400HZ[12]~311
+B1L60 = CARRY(B1_CLK_COUNT_400HZ[12] & !B1L57);
+
+
+--B1L62 is LCD_Display:inst1|CLK_COUNT_400HZ[13]~191
+B1L62 = B1_CLK_COUNT_400HZ[13] & !B1L60 # !B1_CLK_COUNT_400HZ[13] & (B1L60 # GND);
+
+--B1L63 is LCD_Display:inst1|CLK_COUNT_400HZ[13]~312
+B1L63 = CARRY(!B1L60 # !B1_CLK_COUNT_400HZ[13]);
+
+
+--B1L65 is LCD_Display:inst1|CLK_COUNT_400HZ[14]~192
+B1L65 = B1_CLK_COUNT_400HZ[14] & (B1L63 $ GND) # !B1_CLK_COUNT_400HZ[14] & !B1L63 & VCC;
+
+--B1L66 is LCD_Display:inst1|CLK_COUNT_400HZ[14]~313
+B1L66 = CARRY(B1_CLK_COUNT_400HZ[14] & !B1L63);
+
+
+--B1L68 is LCD_Display:inst1|CLK_COUNT_400HZ[15]~193
+B1L68 = B1_CLK_COUNT_400HZ[15] & !B1L66 # !B1_CLK_COUNT_400HZ[15] & (B1L66 # GND);
+
+--B1L69 is LCD_Display:inst1|CLK_COUNT_400HZ[15]~314
+B1L69 = CARRY(!B1L66 # !B1_CLK_COUNT_400HZ[15]);
+
+
+--B1L71 is LCD_Display:inst1|CLK_COUNT_400HZ[16]~187
+B1L71 = B1_CLK_COUNT_400HZ[16] & (B1L69 $ GND) # !B1_CLK_COUNT_400HZ[16] & !B1L69 & VCC;
+
+--B1L72 is LCD_Display:inst1|CLK_COUNT_400HZ[16]~315
+B1L72 = CARRY(B1_CLK_COUNT_400HZ[16] & !B1L69);
+
+
+--B1L75 is LCD_Display:inst1|CLK_COUNT_400HZ[17]~316
+B1L75 = !B1L106 # !SW8;
+
+
+--B1L74 is LCD_Display:inst1|CLK_COUNT_400HZ[17]~188
+B1L74 = B1_CLK_COUNT_400HZ[17] & !B1L72 # !B1_CLK_COUNT_400HZ[17] & (B1L72 # GND);
+
+--B1L76 is LCD_Display:inst1|CLK_COUNT_400HZ[17]~317
+B1L76 = CARRY(!B1L72 # !B1_CLK_COUNT_400HZ[17]);
+
+
+--B1L78 is LCD_Display:inst1|CLK_COUNT_400HZ[18]~189
+B1L78 = B1_CLK_COUNT_400HZ[18] & (B1L76 $ GND) # !B1_CLK_COUNT_400HZ[18] & !B1L76 & VCC;
+
+--B1L79 is LCD_Display:inst1|CLK_COUNT_400HZ[18]~318
+B1L79 = CARRY(B1_CLK_COUNT_400HZ[18] & !B1L76);
+
+
+--B1L81 is LCD_Display:inst1|CLK_COUNT_400HZ[19]~190
+B1L81 = B1_CLK_COUNT_400HZ[19] $ B1L79;
+
+
+--B1L136 is LCD_Display:inst1|Selector2~43
+B1L136 = B1_state.line2 # B1_state.return_home # !B1L100 & B1_DATA_BUS_VALUE[7];
+
+
+--B1L108 is LCD_Display:inst1|Mux0~33
+B1L108 = B1_CHAR_COUNT[1] & (B1_CHAR_COUNT[2] # B1_CHAR_COUNT[4]) # !B1_CHAR_COUNT[1] & B1_CHAR_COUNT[2] & (B1_CHAR_COUNT[0] # B1_CHAR_COUNT[4]);
+
+
+--B1L109 is LCD_Display:inst1|Mux1~83
+B1L109 = B1_CHAR_COUNT[1] & (B1_CHAR_COUNT[4] # !B1_CHAR_COUNT[2]) # !B1_CHAR_COUNT[1] & (B1_CHAR_COUNT[2] # B1_CHAR_COUNT[0] & !B1_CHAR_COUNT[4]);
+
+
+--B1L110 is LCD_Display:inst1|Mux2~29
+B1L110 = B1_CHAR_COUNT[1] & !B1_CHAR_COUNT[0] & !B1_CHAR_COUNT[2] # !B1_CHAR_COUNT[1] & (B1_CHAR_COUNT[2] & !B1_CHAR_COUNT[4]);
+
+
+--B1L94 is LCD_Display:inst1|Equal0~38
+B1L94 = B1L108 & !B1_CHAR_COUNT[3] & !B1L109 & !B1L110;
+
+
+--B1L92 is LCD_Display:inst1|DATA_BUS_VALUE~532
+B1L92 = B1_CHAR_COUNT[3] # B1L108;
+
+
+--B1L115 is LCD_Display:inst1|Mux4~371
+B1L115 = !B1_CHAR_COUNT[2] & !B1_CHAR_COUNT[3];
+
+
+--E1_safe_q[1] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[1]
+E1_safe_q[1] = DFFEAS(E1_counter_comb_bita1, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--E1_safe_q[5] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[5]
+E1_safe_q[5] = DFFEAS(E1_counter_comb_bita5, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L119 is LCD_Display:inst1|Mux5~408
+B1L119 = B1_CHAR_COUNT[1] & (B1_CHAR_COUNT[0] & E1_safe_q[1] # !B1_CHAR_COUNT[0] & (E1_safe_q[5]));
+
+
+--B1L120 is LCD_Display:inst1|Mux5~409
+B1L120 = B1_CHAR_COUNT[4] $ (!B1_CHAR_COUNT[0] & B1_CHAR_COUNT[1]);
+
+
+--B1L112 is LCD_Display:inst1|Mux3~314
+B1L112 = B1_CHAR_COUNT[4] # B1_CHAR_COUNT[3] # !B1_CHAR_COUNT[2];
+
+
+--B1L121 is LCD_Display:inst1|Mux5~410
+B1L121 = B1L115 & (B1L119 & !B1L112 # !B1L120) # !B1L115 & B1L119 & (!B1L112);
+
+
+--B1L116 is LCD_Display:inst1|Mux4~372
+B1L116 = B1_CHAR_COUNT[4] & (!B1_CHAR_COUNT[1]) # !B1_CHAR_COUNT[4] & (B1_CHAR_COUNT[0] # B1_CHAR_COUNT[1]);
+
+
+--E1_safe_q[2] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[2]
+E1_safe_q[2] = DFFEAS(E1_counter_comb_bita2, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--E1_safe_q[6] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[6]
+E1_safe_q[6] = DFFEAS(E1_counter_comb_bita6, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L117 is LCD_Display:inst1|Mux4~373
+B1L117 = B1_CHAR_COUNT[0] & E1_safe_q[2] # !B1_CHAR_COUNT[0] & (E1_safe_q[6]) # !B1_CHAR_COUNT[1];
+
+
+--B1L118 is LCD_Display:inst1|Mux4~374
+B1L118 = B1L115 & (B1L116 # B1L117 & !B1L112) # !B1L115 & (B1L117 & !B1L112);
+
+
+--E1_safe_q[3] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[3]
+E1_safe_q[3] = DFFEAS(E1_counter_comb_bita3, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--E1_safe_q[7] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[7]
+E1_safe_q[7] = DFFEAS(E1_counter_comb_bita7, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L113 is LCD_Display:inst1|Mux3~315
+B1L113 = B1_CHAR_COUNT[0] & (E1_safe_q[3] # !B1L111) # !B1_CHAR_COUNT[0] & (E1_safe_q[7] & B1L111);
+
+
+--B1L114 is LCD_Display:inst1|Mux3~316
+B1L114 = B1L113 & !B1_CHAR_COUNT[4] & !B1_CHAR_COUNT[3];
+
+
+--B1L107 is LCD_Display:inst1|LessThan1~76
+B1L107 = !B1L121 & !B1L118 # !B1L114;
+
+
+--B1L137 is LCD_Display:inst1|Selector3~253
+B1L137 = B1_state.print_string & (B1L94 & (!B1L107) # !B1L94 & !B1L92);
+
+
+--B1L138 is LCD_Display:inst1|Selector3~254
+B1L138 = B1_state.line2 # B1L137 # !B1L100 & B1_DATA_BUS_VALUE[6];
+
+
+--B1L140 is LCD_Display:inst1|Selector4~267
+B1L140 = B1_CHAR_COUNT[3] # B1L109 # B1L94 & B1L107;
+
+
+--B1_state.display_clear is LCD_Display:inst1|state.display_clear
+B1_state.display_clear = DFFEAS(B1L190, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.display_on is LCD_Display:inst1|state.display_on
+B1_state.display_on = DFFEAS(B1L191, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.display_off is LCD_Display:inst1|state.display_off
+B1_state.display_off = DFFEAS(B1L192, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L141 is LCD_Display:inst1|Selector4~268
+B1L141 = !B1_state.display_clear & !B1_state.display_on & !B1_state.display_off;
+
+
+--B1L142 is LCD_Display:inst1|Selector4~269
+B1L142 = B1_state.print_string & !B1L140 # !B1_state.print_string & (!B1L141 # !B1L139);
+
+
+--B1L143 is LCD_Display:inst1|Selector5~234
+B1L143 = B1L94 & (B1L107 # B1L110 & !B1_CHAR_COUNT[3]) # !B1L94 & (B1L110 & !B1_CHAR_COUNT[3]);
+
+
+--B1L144 is LCD_Display:inst1|Selector5~235
+B1L144 = B1_state.print_string & !B1L143 # !B1_state.print_string & (!B1L141 # !B1L139);
+
+
+--E1_safe_q[0] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[0]
+E1_safe_q[0] = DFFEAS(E1_counter_comb_bita0, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--E1_safe_q[4] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[4]
+E1_safe_q[4] = DFFEAS(E1_counter_comb_bita4, SW4, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L122 is LCD_Display:inst1|Mux6~344
+B1L122 = B1_CHAR_COUNT[0] & (E1_safe_q[0] # !B1_CHAR_COUNT[1]) # !B1_CHAR_COUNT[0] & (E1_safe_q[4] & B1_CHAR_COUNT[1]);
+
+
+--B1L123 is LCD_Display:inst1|Mux6~345
+B1L123 = B1_CHAR_COUNT[0] & B1_CHAR_COUNT[1] # !B1_CHAR_COUNT[0] & (B1_CHAR_COUNT[4]) # !B1L115;
+
+
+--B1L124 is LCD_Display:inst1|Mux6~346
+B1L124 = B1L122 & !B1L112 # !B1L123;
+
+
+--B1L1 is LCD_Display:inst1|Add1~324
+B1L1 = B1L121 # B1L118 # B1L124;
+
+
+--B1L93 is LCD_Display:inst1|DATA_BUS_VALUE~533
+B1L93 = B1L94 & B1L114 & (B1L121 # B1L118);
+
+
+--B1L145 is LCD_Display:inst1|Selector6~217
+B1L145 = B1_state.print_string & (B1L114 $ (B1L1 & B1L93));
+
+
+--B1_state.reset1 is LCD_Display:inst1|state.reset1
+B1_state.reset1 = DFFEAS(VCC, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L146 is LCD_Display:inst1|Selector6~218
+B1L146 = !B1_DATA_BUS_VALUE[3] & (B1_state.drop_lcd_e # B1_state.hold) # !B1_state.reset1;
+
+
+--B1_state.reset3 is LCD_Display:inst1|state.reset3
+B1_state.reset3 = DFFEAS(B1L193, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.func_set is LCD_Display:inst1|state.func_set
+B1_state.func_set = DFFEAS(B1L194, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1_state.reset2 is LCD_Display:inst1|state.reset2
+B1_state.reset2 = DFFEAS(B1L195, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L147 is LCD_Display:inst1|Selector6~219
+B1L147 = B1_state.display_on # B1_state.display_off # B1_state.func_set # B1_state.reset2;
+
+
+--B1L148 is LCD_Display:inst1|Selector6~220
+B1L148 = !B1L145 & !B1L146 & !B1_state.reset3 & !B1L147;
+
+
+--B1L2 is LCD_Display:inst1|Add1~325
+B1L2 = B1L121 # B1L122 & !B1L112 # !B1L123;
+
+
+--B1L149 is LCD_Display:inst1|Selector7~181
+B1L149 = B1_state.print_string & (B1L118 $ (!B1L2 & B1L93));
+
+
+--B1L150 is LCD_Display:inst1|Selector7~182
+B1L150 = B1_DATA_BUS_VALUE[2] & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L151 is LCD_Display:inst1|Selector7~183
+B1L151 = B1_state.mode_set # B1_state.display_on # B1L149 # B1L150;
+
+
+--B1L152 is LCD_Display:inst1|Selector8~158
+B1L152 = B1_state.print_string & (B1L121 $ (!B1L124 & B1L93));
+
+
+--B1L153 is LCD_Display:inst1|Selector8~159
+B1L153 = B1_state.mode_set # B1L152 # !B1L100 & B1_DATA_BUS_VALUE[1];
+
+
+--B1L154 is LCD_Display:inst1|Selector9~180
+B1L154 = B1_state.display_clear # B1_DATA_BUS_VALUE[0] & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L155 is LCD_Display:inst1|Selector9~181
+B1L155 = B1L124 $ (B1L94 & !B1L107);
+
+
+--B1L156 is LCD_Display:inst1|Selector9~182
+B1L156 = B1L154 # B1_state.print_string & B1L155;
+
+
+--B1L5 is LCD_Display:inst1|CHAR_COUNT[0]~43
+B1L5 = B1_CHAR_COUNT[0] $ VCC;
+
+--B1L6 is LCD_Display:inst1|CHAR_COUNT[0]~157
+B1L6 = CARRY(B1_CHAR_COUNT[0]);
+
+
+--B1L8 is LCD_Display:inst1|CHAR_COUNT[1]~44
+B1L8 = B1_CHAR_COUNT[1] & !B1L6 # !B1_CHAR_COUNT[1] & (B1L6 # GND);
+
+--B1L9 is LCD_Display:inst1|CHAR_COUNT[1]~158
+B1L9 = CARRY(!B1L6 # !B1_CHAR_COUNT[1]);
+
+
+--B1L171 is LCD_Display:inst1|Selector25~17
+B1L171 = B1_CHAR_COUNT[1] & B1_state.reset1;
+
+
+--B1L11 is LCD_Display:inst1|CHAR_COUNT[2]~45
+B1L11 = B1_CHAR_COUNT[2] & (B1L9 $ GND) # !B1_CHAR_COUNT[2] & !B1L9 & VCC;
+
+--B1L12 is LCD_Display:inst1|CHAR_COUNT[2]~159
+B1L12 = CARRY(B1_CHAR_COUNT[2] & !B1L9);
+
+
+--B1L170 is LCD_Display:inst1|Selector24~17
+B1L170 = B1_CHAR_COUNT[2] & B1_state.reset1;
+
+
+--B1L172 is LCD_Display:inst1|Selector26~17
+B1L172 = B1_CHAR_COUNT[0] & B1_state.reset1;
+
+
+--B1L14 is LCD_Display:inst1|CHAR_COUNT[3]~46
+B1L14 = B1_CHAR_COUNT[3] & !B1L12 # !B1_CHAR_COUNT[3] & (B1L12 # GND);
+
+--B1L15 is LCD_Display:inst1|CHAR_COUNT[3]~160
+B1L15 = CARRY(!B1L12 # !B1_CHAR_COUNT[3]);
+
+
+--B1L169 is LCD_Display:inst1|Selector23~17
+B1L169 = B1_CHAR_COUNT[3] & B1_state.reset1;
+
+
+--B1L17 is LCD_Display:inst1|CHAR_COUNT[4]~47
+B1L17 = B1_CHAR_COUNT[4] $ !B1L15;
+
+
+--B1L168 is LCD_Display:inst1|Selector22~17
+B1L168 = B1_CHAR_COUNT[4] & B1_state.reset1;
+
+
+--B1_next_command.mode_set is LCD_Display:inst1|next_command.mode_set
+B1_next_command.mode_set = DFFEAS(B1L159, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L187 is LCD_Display:inst1|state~147
+B1L187 = B1_state.hold & B1_next_command.mode_set;
+
+
+--B1_next_command.line2 is LCD_Display:inst1|next_command.line2
+B1_next_command.line2 = DFFEAS(B1L162, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L188 is LCD_Display:inst1|state~148
+B1L188 = B1_state.hold & B1_next_command.line2;
+
+
+--B1_next_command.return_home is LCD_Display:inst1|next_command.return_home
+B1_next_command.return_home = DFFEAS(B1L163, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L189 is LCD_Display:inst1|state~149
+B1L189 = B1_state.hold & B1_next_command.return_home;
+
+
+--E1_counter_comb_bita0 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita0
+E1_counter_comb_bita0 = E1_safe_q[0] $ VCC;
+
+--E1L2 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita0~COUT
+E1L2 = CARRY(E1_safe_q[0]);
+
+
+--E1_counter_comb_bita1 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita1
+E1_counter_comb_bita1 = E1_safe_q[1] & !E1L2 # !E1_safe_q[1] & (E1L2 # GND);
+
+--E1L4 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita1~COUT
+E1L4 = CARRY(!E1L2 # !E1_safe_q[1]);
+
+
+--E1_counter_comb_bita2 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita2
+E1_counter_comb_bita2 = E1_safe_q[2] & (E1L4 $ GND) # !E1_safe_q[2] & !E1L4 & VCC;
+
+--E1L6 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita2~COUT
+E1L6 = CARRY(E1_safe_q[2] & !E1L4);
+
+
+--E1_counter_comb_bita3 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita3
+E1_counter_comb_bita3 = E1_safe_q[3] & !E1L6 # !E1_safe_q[3] & (E1L6 # GND);
+
+--E1L8 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita3~COUT
+E1L8 = CARRY(!E1L6 # !E1_safe_q[3]);
+
+
+--E1_counter_comb_bita4 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita4
+E1_counter_comb_bita4 = E1_safe_q[4] & (E1L8 $ GND) # !E1_safe_q[4] & !E1L8 & VCC;
+
+--E1L10 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita4~COUT
+E1L10 = CARRY(E1_safe_q[4] & !E1L8);
+
+
+--E1_counter_comb_bita5 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita5
+E1_counter_comb_bita5 = E1_safe_q[5] & !E1L10 # !E1_safe_q[5] & (E1L10 # GND);
+
+--E1L12 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita5~COUT
+E1L12 = CARRY(!E1L10 # !E1_safe_q[5]);
+
+
+--E1_counter_comb_bita6 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita6
+E1_counter_comb_bita6 = E1_safe_q[6] & (E1L12 $ GND) # !E1_safe_q[6] & !E1L12 & VCC;
+
+--E1L14 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita6~COUT
+E1L14 = CARRY(E1_safe_q[6] & !E1L12);
+
+
+--E1_counter_comb_bita7 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita7
+E1_counter_comb_bita7 = E1_safe_q[7] $ E1L14;
+
+
+--B1_next_command.display_clear is LCD_Display:inst1|next_command.display_clear
+B1_next_command.display_clear = DFFEAS(B1L167, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L190 is LCD_Display:inst1|state~150
+B1L190 = B1_state.hold & B1_next_command.display_clear;
+
+
+--B1_next_command.display_on is LCD_Display:inst1|next_command.display_on
+B1_next_command.display_on = DFFEAS(B1L158, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L191 is LCD_Display:inst1|state~151
+B1L191 = B1_state.hold & B1_next_command.display_on;
+
+
+--B1_next_command.display_off is LCD_Display:inst1|next_command.display_off
+B1_next_command.display_off = DFFEAS(B1L166, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L192 is LCD_Display:inst1|state~152
+B1L192 = B1_state.hold & B1_next_command.display_off;
+
+
+--B1_next_command.reset3 is LCD_Display:inst1|next_command.reset3
+B1_next_command.reset3 = DFFEAS(B1L165, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L193 is LCD_Display:inst1|state~153
+B1L193 = B1_state.hold & B1_next_command.reset3;
+
+
+--B1_next_command.func_set is LCD_Display:inst1|next_command.func_set
+B1_next_command.func_set = DFFEAS(B1L157, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L194 is LCD_Display:inst1|state~154
+B1L194 = B1_state.hold & B1_next_command.func_set;
+
+
+--B1_next_command.reset2 is LCD_Display:inst1|next_command.reset2
+B1_next_command.reset2 = DFFEAS(B1L164, B1_CLK_400HZ, SW8,  ,  ,  ,  ,  ,  );
+
+
+--B1L195 is LCD_Display:inst1|state~155
+B1L195 = !B1_next_command.reset2 & B1_state.hold;
+
+
+--B1L159 is LCD_Display:inst1|Selector14~38
+B1L159 = B1_state.display_on # B1_next_command.mode_set & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L162 is LCD_Display:inst1|Selector16~40
+B1L162 = B1_state.print_string & (B1L95 # !B1L100 & B1_next_command.line2) # !B1_state.print_string & !B1L100 & B1_next_command.line2;
+
+
+--B1L163 is LCD_Display:inst1|Selector17~40
+B1L163 = B1_state.print_string & (B1L96 # !B1L100 & B1_next_command.return_home) # !B1_state.print_string & !B1L100 & B1_next_command.return_home;
+
+
+--B1L167 is LCD_Display:inst1|Selector21~38
+B1L167 = B1_state.display_off # B1_next_command.display_clear & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L158 is LCD_Display:inst1|Selector13~38
+B1L158 = B1_state.display_clear # B1_next_command.display_on & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L166 is LCD_Display:inst1|Selector20~38
+B1L166 = B1_state.func_set # B1_next_command.display_off & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L165 is LCD_Display:inst1|Selector19~38
+B1L165 = B1_state.reset2 # B1_next_command.reset3 & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L157 is LCD_Display:inst1|Selector12~38
+B1L157 = B1_state.reset3 # B1_next_command.func_set & (B1_state.drop_lcd_e # B1_state.hold);
+
+
+--B1L164 is LCD_Display:inst1|Selector18~38
+B1L164 = B1_state.reset1 & (B1_next_command.reset2 # !B1_state.drop_lcd_e & !B1_state.hold);
+
+
+--SW8 is SW8
+--operation mode is input
+
+SW8 = INPUT();
+
+
+--CLK_48Mhz is CLK_48Mhz
+--operation mode is input
+
+CLK_48Mhz = INPUT();
+
+
+--SW4 is SW4
+--operation mode is input
+
+SW4 = INPUT();
+
+
+--LCD_RS is LCD_RS
+--operation mode is output
+
+LCD_RS = OUTPUT(B1_LCD_RS);
+
+
+--LCD_E is LCD_E
+--operation mode is output
+
+LCD_E = OUTPUT(!B1_LCD_E);
+
+
+--LCD_RW is LCD_RW
+--operation mode is output
+
+LCD_RW = OUTPUT(!B1_LCD_RW_INT);
+
+
+--LCD_ON is LCD_ON
+--operation mode is output
+
+LCD_ON = OUTPUT(VCC);
+
+
+--LCD_BLON is LCD_BLON
+--operation mode is output
+
+LCD_BLON = OUTPUT(VCC);
+
+
+--DATA_BUS[7] is DATA_BUS[7]
+--operation mode is bidir
+
+DATA_BUS[7]_tri_out = TRI(B1_DATA_BUS_VALUE[7], B1_LCD_RW_INT);
+DATA_BUS[7] = BIDIR(DATA_BUS[7]_tri_out);
+
+
+--DATA_BUS[6] is DATA_BUS[6]
+--operation mode is bidir
+
+DATA_BUS[6]_tri_out = TRI(B1_DATA_BUS_VALUE[6], B1_LCD_RW_INT);
+DATA_BUS[6] = BIDIR(DATA_BUS[6]_tri_out);
+
+
+--DATA_BUS[5] is DATA_BUS[5]
+--operation mode is bidir
+
+DATA_BUS[5]_tri_out = TRI(!B1_DATA_BUS_VALUE[5], B1_LCD_RW_INT);
+DATA_BUS[5] = BIDIR(DATA_BUS[5]_tri_out);
+
+
+--DATA_BUS[4] is DATA_BUS[4]
+--operation mode is bidir
+
+DATA_BUS[4]_tri_out = TRI(!B1_DATA_BUS_VALUE[4], B1_LCD_RW_INT);
+DATA_BUS[4] = BIDIR(DATA_BUS[4]_tri_out);
+
+
+--DATA_BUS[3] is DATA_BUS[3]
+--operation mode is bidir
+
+DATA_BUS[3]_tri_out = TRI(!B1_DATA_BUS_VALUE[3], B1_LCD_RW_INT);
+DATA_BUS[3] = BIDIR(DATA_BUS[3]_tri_out);
+
+
+--DATA_BUS[2] is DATA_BUS[2]
+--operation mode is bidir
+
+DATA_BUS[2]_tri_out = TRI(B1_DATA_BUS_VALUE[2], B1_LCD_RW_INT);
+DATA_BUS[2] = BIDIR(DATA_BUS[2]_tri_out);
+
+
+--DATA_BUS[1] is DATA_BUS[1]
+--operation mode is bidir
+
+DATA_BUS[1]_tri_out = TRI(B1_DATA_BUS_VALUE[1], B1_LCD_RW_INT);
+DATA_BUS[1] = BIDIR(DATA_BUS[1]_tri_out);
+
+
+--DATA_BUS[0] is DATA_BUS[0]
+--operation mode is bidir
+
+DATA_BUS[0]_tri_out = TRI(B1_DATA_BUS_VALUE[0], B1_LCD_RW_INT);
+DATA_BUS[0] = BIDIR(DATA_BUS[0]_tri_out);
+
+
