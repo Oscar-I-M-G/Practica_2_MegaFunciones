@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 6.214 ns
+From           : KEY3_ACLR
+To             : LCD_Display:inst1|CLK_COUNT_400HZ[0]
+From Clock     : --
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 11.659 ns
+From           : LCD_Display:inst1|DATA_BUS_VALUE[7]
+To             : DATA_BUS[7]
+From Clock     : CLK_50Mhz
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.025 ns
+From           : KEY3_ACLR
+To             : LCD_Display:inst1|CHAR_COUNT[4]
+From Clock     : --
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK_50Mhz'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 234.36 MHz ( period = 4.267 ns )
+From           : LCD_Display:inst1|CLK_COUNT_400HZ[6]
+To             : LCD_Display:inst1|CLK_400HZ
+From Clock     : CLK_50Mhz
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Clock Setup: 'SW0_PULSE'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 420.17 MHz ( period = 2.380 ns )
+From           : lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[0]
+To             : lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[7]
+From Clock     : SW0_PULSE
+To Clock       : SW0_PULSE
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+
