@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 5.822 ns
+From           : KEY3_ACLR
+To             : LCD_Display:inst1|CLK_COUNT_400HZ[0]
+From Clock     : --
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 14.487 ns
+From           : LCD_Display:inst1|DATA_BUS_VALUE[5]
+To             : DATA_BUS[5]
+From Clock     : CLK_50Mhz
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 5.003 ns
+From           : SW0_PULSE
+To             : debounce:inst3|SHIFT_PB[3]
+From Clock     : --
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK_50Mhz'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 203.17 MHz ( period = 4.922 ns )
+From           : LCD_Display:inst1|CHAR_COUNT[1]
+To             : LCD_Display:inst1|DATA_BUS_VALUE[2]
+From Clock     : CLK_50Mhz
+To Clock       : CLK_50Mhz
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+
