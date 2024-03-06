@@ -1,6 +1,0 @@
-<?xml version="1.0" ?>
-<LOG_ROOT>
-	<PROJECT NAME="tutor3">
-		<CBX_INST_ENTRY INSTANCE_NAME="|tutor3|lpm_counter0:inst2|lpm_counter:lpm_counter_component" CBX_FILE_NAME="cntr_u2i.tdf"/>
-	</PROJECT>
-</LOG_ROOT>
