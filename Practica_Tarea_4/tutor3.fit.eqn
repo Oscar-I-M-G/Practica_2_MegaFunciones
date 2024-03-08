@@ -1,0 +1,1284 @@
+-- Copyright (C) 1991-2007 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--C1_LCD_RS is LCD_Display:inst1|LCD_RS at LCFF_X20_Y27_N21
+C1_LCD_RS = DFFEAS(C1L137, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_LCD_E is LCD_Display:inst1|LCD_E at LCFF_X20_Y27_N17
+C1_LCD_E = DFFEAS(C1L99, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_LCD_RW_INT is LCD_Display:inst1|LCD_RW_INT at LCFF_X20_Y27_N11
+C1_LCD_RW_INT = DFFEAS(C1L103, GLOBAL(C1L21), GLOBAL(A1L18),  , C1L101,  ,  ,  ,  );
+
+
+--C1_state.print_string is LCD_Display:inst1|state.print_string at LCFF_X23_Y28_N29
+C1_state.print_string = DFFEAS(C1L189, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.drop_lcd_e is LCD_Display:inst1|state.drop_lcd_e at LCFF_X20_Y27_N9
+C1_state.drop_lcd_e = DFFEAS(C1L101, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.hold is LCD_Display:inst1|state.hold at LCFF_X20_Y27_N23
+C1_state.hold = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L21), GLOBAL(A1L18),  ,  , C1_state.drop_lcd_e,  ,  , VCC);
+
+
+--C1L137 is LCD_Display:inst1|Selector1~38 at LCCOMB_X20_Y27_N20
+C1L137 = C1_state.print_string # C1_LCD_RS & (C1_state.drop_lcd_e # C1_state.hold);
+
+
+--C1_CLK_400HZ is LCD_Display:inst1|CLK_400HZ at LCFF_X59_Y19_N31
+C1_CLK_400HZ = DFFEAS(C1L20, CLK_48Mhz,  ,  ,  ,  ,  , !SW8,  );
+
+
+--C1L99 is LCD_Display:inst1|LCD_E~9 at LCCOMB_X20_Y27_N16
+C1L99 = C1_state.hold & (C1_LCD_E) # !C1_state.hold & C1_state.drop_lcd_e;
+
+
+--C1L101 is LCD_Display:inst1|LCD_RS~0 at LCCOMB_X20_Y27_N8
+C1L101 = !C1_state.drop_lcd_e & !C1_state.hold;
+
+
+--C1_next_command.print_string is LCD_Display:inst1|next_command.print_string at LCFF_X23_Y28_N19
+C1_next_command.print_string = DFFEAS(C1L163, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L189 is LCD_Display:inst1|state~146 at LCCOMB_X23_Y28_N28
+C1L189 = C1_state.hold & C1_next_command.print_string;
+
+
+--C1_CLK_COUNT_400HZ[16] is LCD_Display:inst1|CLK_COUNT_400HZ[16] at LCFF_X59_Y20_N13
+C1_CLK_COUNT_400HZ[16] = DFFEAS(C1L73, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[17] is LCD_Display:inst1|CLK_COUNT_400HZ[17] at LCFF_X59_Y20_N15
+C1_CLK_COUNT_400HZ[17] = DFFEAS(C1L76, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[18] is LCD_Display:inst1|CLK_COUNT_400HZ[18] at LCFF_X59_Y20_N17
+C1_CLK_COUNT_400HZ[18] = DFFEAS(C1L79, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[19] is LCD_Display:inst1|CLK_COUNT_400HZ[19] at LCFF_X59_Y20_N19
+C1_CLK_COUNT_400HZ[19] = DFFEAS(C1L82, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L104 is LCD_Display:inst1|LessThan0~261 at LCCOMB_X59_Y19_N12
+C1L104 = !C1_CLK_COUNT_400HZ[16] & !C1_CLK_COUNT_400HZ[19] & !C1_CLK_COUNT_400HZ[18] & !C1_CLK_COUNT_400HZ[17];
+
+
+--C1_CLK_COUNT_400HZ[13] is LCD_Display:inst1|CLK_COUNT_400HZ[13] at LCFF_X59_Y20_N7
+C1_CLK_COUNT_400HZ[13] = DFFEAS(C1L64, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[14] is LCD_Display:inst1|CLK_COUNT_400HZ[14] at LCFF_X59_Y20_N9
+C1_CLK_COUNT_400HZ[14] = DFFEAS(C1L67, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[15] is LCD_Display:inst1|CLK_COUNT_400HZ[15] at LCFF_X59_Y20_N11
+C1_CLK_COUNT_400HZ[15] = DFFEAS(C1L70, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L105 is LCD_Display:inst1|LessThan0~262 at LCCOMB_X59_Y19_N18
+C1L105 = !C1_CLK_COUNT_400HZ[14] # !C1_CLK_COUNT_400HZ[15] # !C1_CLK_COUNT_400HZ[13];
+
+
+--C1_CLK_COUNT_400HZ[5] is LCD_Display:inst1|CLK_COUNT_400HZ[5] at LCFF_X59_Y21_N23
+C1_CLK_COUNT_400HZ[5] = DFFEAS(C1L40, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[6] is LCD_Display:inst1|CLK_COUNT_400HZ[6] at LCFF_X59_Y21_N25
+C1_CLK_COUNT_400HZ[6] = DFFEAS(C1L43, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[7] is LCD_Display:inst1|CLK_COUNT_400HZ[7] at LCFF_X59_Y21_N27
+C1_CLK_COUNT_400HZ[7] = DFFEAS(C1L46, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[8] is LCD_Display:inst1|CLK_COUNT_400HZ[8] at LCFF_X59_Y21_N29
+C1_CLK_COUNT_400HZ[8] = DFFEAS(C1L49, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L106 is LCD_Display:inst1|LessThan0~263 at LCCOMB_X59_Y19_N22
+C1L106 = !C1_CLK_COUNT_400HZ[8] & !C1_CLK_COUNT_400HZ[7] & (!C1_CLK_COUNT_400HZ[6] # !C1_CLK_COUNT_400HZ[5]);
+
+
+--C1_CLK_COUNT_400HZ[9] is LCD_Display:inst1|CLK_COUNT_400HZ[9] at LCFF_X59_Y21_N31
+C1_CLK_COUNT_400HZ[9] = DFFEAS(C1L52, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[10] is LCD_Display:inst1|CLK_COUNT_400HZ[10] at LCFF_X59_Y20_N1
+C1_CLK_COUNT_400HZ[10] = DFFEAS(C1L55, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[11] is LCD_Display:inst1|CLK_COUNT_400HZ[11] at LCFF_X59_Y20_N3
+C1_CLK_COUNT_400HZ[11] = DFFEAS(C1L58, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L107 is LCD_Display:inst1|LessThan0~264 at LCCOMB_X59_Y19_N16
+C1L107 = !C1_CLK_COUNT_400HZ[10] & (C1L106 # !C1_CLK_COUNT_400HZ[9]) # !C1_CLK_COUNT_400HZ[11];
+
+
+--C1_CLK_COUNT_400HZ[12] is LCD_Display:inst1|CLK_COUNT_400HZ[12] at LCFF_X59_Y20_N5
+C1_CLK_COUNT_400HZ[12] = DFFEAS(C1L61, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L108 is LCD_Display:inst1|LessThan0~265 at LCCOMB_X59_Y19_N6
+C1L108 = C1L104 & (C1L105 # C1L107 & !C1_CLK_COUNT_400HZ[12]);
+
+
+--C1L20 is LCD_Display:inst1|CLK_400HZ~100 at LCCOMB_X59_Y19_N30
+C1L20 = C1_CLK_400HZ $ !C1L108;
+
+
+--C1_DATA_BUS_VALUE[7] is LCD_Display:inst1|DATA_BUS_VALUE[7] at LCFF_X23_Y28_N25
+C1_DATA_BUS_VALUE[7] = DFFEAS(C1L138, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[6] is LCD_Display:inst1|DATA_BUS_VALUE[6] at LCFF_X20_Y28_N21
+C1_DATA_BUS_VALUE[6] = DFFEAS(C1L140, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[5] is LCD_Display:inst1|DATA_BUS_VALUE[5] at LCFF_X20_Y28_N29
+C1_DATA_BUS_VALUE[5] = DFFEAS(C1L144, GLOBAL(C1L21), GLOBAL(A1L18),  , C1L101,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[4] is LCD_Display:inst1|DATA_BUS_VALUE[4] at LCFF_X22_Y28_N3
+C1_DATA_BUS_VALUE[4] = DFFEAS(C1L146, GLOBAL(C1L21), GLOBAL(A1L18),  , C1L101,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[3] is LCD_Display:inst1|DATA_BUS_VALUE[3] at LCFF_X21_Y28_N11
+C1_DATA_BUS_VALUE[3] = DFFEAS(C1L150, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[2] is LCD_Display:inst1|DATA_BUS_VALUE[2] at LCFF_X21_Y28_N9
+C1_DATA_BUS_VALUE[2] = DFFEAS(C1L153, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[1] is LCD_Display:inst1|DATA_BUS_VALUE[1] at LCFF_X20_Y28_N25
+C1_DATA_BUS_VALUE[1] = DFFEAS(C1L155, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_DATA_BUS_VALUE[0] is LCD_Display:inst1|DATA_BUS_VALUE[0] at LCFF_X20_Y28_N9
+C1_DATA_BUS_VALUE[0] = DFFEAS(C1L158, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_CHAR_COUNT[4] is LCD_Display:inst1|CHAR_COUNT[4] at LCFF_X22_Y28_N25
+C1_CHAR_COUNT[4] = DFFEAS(C1L17, GLOBAL(C1L21),  ,  , SW8, C1L170,  ,  , !C1_state.print_string);
+
+
+--C1_CHAR_COUNT[1] is LCD_Display:inst1|CHAR_COUNT[1] at LCFF_X22_Y28_N19
+C1_CHAR_COUNT[1] = DFFEAS(C1L8, GLOBAL(C1L21),  ,  , SW8, C1L173,  ,  , !C1_state.print_string);
+
+
+--C1_CHAR_COUNT[2] is LCD_Display:inst1|CHAR_COUNT[2] at LCFF_X22_Y28_N21
+C1_CHAR_COUNT[2] = DFFEAS(C1L11, GLOBAL(C1L21),  ,  , SW8, C1L172,  ,  , !C1_state.print_string);
+
+
+--C1L113 is LCD_Display:inst1|Mux3~313 at LCCOMB_X22_Y28_N8
+C1L113 = C1_CHAR_COUNT[2] & C1_CHAR_COUNT[1];
+
+
+--C1_CHAR_COUNT[0] is LCD_Display:inst1|CHAR_COUNT[0] at LCFF_X22_Y28_N17
+C1_CHAR_COUNT[0] = DFFEAS(C1L5, GLOBAL(C1L21),  ,  , SW8, C1L174,  ,  , !C1_state.print_string);
+
+
+--C1_CHAR_COUNT[3] is LCD_Display:inst1|CHAR_COUNT[3] at LCFF_X22_Y28_N23
+C1_CHAR_COUNT[3] = DFFEAS(C1L14, GLOBAL(C1L21),  ,  , SW8, C1L171,  ,  , !C1_state.print_string);
+
+
+--C1L97 is LCD_Display:inst1|Equal3~22 at LCCOMB_X23_Y28_N4
+C1L97 = C1L113 & C1_CHAR_COUNT[4] & C1_CHAR_COUNT[3] & C1_CHAR_COUNT[0];
+
+
+--C1L96 is LCD_Display:inst1|Equal2~35 at LCCOMB_X23_Y28_N16
+C1L96 = C1L113 & !C1_CHAR_COUNT[4] & C1_CHAR_COUNT[3] & C1_CHAR_COUNT[0];
+
+
+--C1L162 is LCD_Display:inst1|Selector15~107 at LCCOMB_X23_Y28_N0
+C1L162 = !C1L97 & !C1L96 & C1_state.print_string;
+
+
+--C1_state.mode_set is LCD_Display:inst1|state.mode_set at LCFF_X20_Y27_N25
+C1_state.mode_set = DFFEAS(C1L190, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.line2 is LCD_Display:inst1|state.line2 at LCFF_X23_Y28_N27
+C1_state.line2 = DFFEAS(C1L191, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.return_home is LCD_Display:inst1|state.return_home at LCFF_X23_Y28_N13
+C1_state.return_home = DFFEAS(C1L192, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L141 is LCD_Display:inst1|Selector4~266 at LCCOMB_X23_Y28_N6
+C1L141 = !C1_state.return_home & !C1_state.mode_set & !C1_state.line2;
+
+
+--C1L163 is LCD_Display:inst1|Selector15~108 at LCCOMB_X23_Y28_N18
+C1L163 = C1L162 # C1_next_command.print_string & !C1L101 # !C1L141;
+
+
+--C1_CLK_COUNT_400HZ[4] is LCD_Display:inst1|CLK_COUNT_400HZ[4] at LCFF_X59_Y21_N21
+C1_CLK_COUNT_400HZ[4] = DFFEAS(C1L37, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[3] is LCD_Display:inst1|CLK_COUNT_400HZ[3] at LCFF_X59_Y21_N19
+C1_CLK_COUNT_400HZ[3] = DFFEAS(C1L33, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[2] is LCD_Display:inst1|CLK_COUNT_400HZ[2] at LCFF_X59_Y21_N17
+C1_CLK_COUNT_400HZ[2] = DFFEAS(C1L30, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[1] is LCD_Display:inst1|CLK_COUNT_400HZ[1] at LCFF_X59_Y21_N15
+C1_CLK_COUNT_400HZ[1] = DFFEAS(C1L27, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1_CLK_COUNT_400HZ[0] is LCD_Display:inst1|CLK_COUNT_400HZ[0] at LCFF_X59_Y21_N13
+C1_CLK_COUNT_400HZ[0] = DFFEAS(C1L24, GLOBAL(A1L2),  ,  ,  ,  ,  , C1L35,  );
+
+
+--C1L24 is LCD_Display:inst1|CLK_COUNT_400HZ[0]~206 at LCCOMB_X59_Y21_N12
+C1L24 = C1_CLK_COUNT_400HZ[0] $ VCC;
+
+--C1L25 is LCD_Display:inst1|CLK_COUNT_400HZ[0]~299 at LCCOMB_X59_Y21_N12
+C1L25 = CARRY(C1_CLK_COUNT_400HZ[0]);
+
+
+--C1L27 is LCD_Display:inst1|CLK_COUNT_400HZ[1]~205 at LCCOMB_X59_Y21_N14
+C1L27 = C1_CLK_COUNT_400HZ[1] & !C1L25 # !C1_CLK_COUNT_400HZ[1] & (C1L25 # GND);
+
+--C1L28 is LCD_Display:inst1|CLK_COUNT_400HZ[1]~300 at LCCOMB_X59_Y21_N14
+C1L28 = CARRY(!C1L25 # !C1_CLK_COUNT_400HZ[1]);
+
+
+--C1L30 is LCD_Display:inst1|CLK_COUNT_400HZ[2]~204 at LCCOMB_X59_Y21_N16
+C1L30 = C1_CLK_COUNT_400HZ[2] & (C1L28 $ GND) # !C1_CLK_COUNT_400HZ[2] & !C1L28 & VCC;
+
+--C1L31 is LCD_Display:inst1|CLK_COUNT_400HZ[2]~301 at LCCOMB_X59_Y21_N16
+C1L31 = CARRY(C1_CLK_COUNT_400HZ[2] & !C1L28);
+
+
+--C1L33 is LCD_Display:inst1|CLK_COUNT_400HZ[3]~203 at LCCOMB_X59_Y21_N18
+C1L33 = C1_CLK_COUNT_400HZ[3] & !C1L31 # !C1_CLK_COUNT_400HZ[3] & (C1L31 # GND);
+
+--C1L34 is LCD_Display:inst1|CLK_COUNT_400HZ[3]~302 at LCCOMB_X59_Y21_N18
+C1L34 = CARRY(!C1L31 # !C1_CLK_COUNT_400HZ[3]);
+
+
+--C1L37 is LCD_Display:inst1|CLK_COUNT_400HZ[4]~202 at LCCOMB_X59_Y21_N20
+C1L37 = C1_CLK_COUNT_400HZ[4] & (C1L34 $ GND) # !C1_CLK_COUNT_400HZ[4] & !C1L34 & VCC;
+
+--C1L38 is LCD_Display:inst1|CLK_COUNT_400HZ[4]~303 at LCCOMB_X59_Y21_N20
+C1L38 = CARRY(C1_CLK_COUNT_400HZ[4] & !C1L34);
+
+
+--C1L40 is LCD_Display:inst1|CLK_COUNT_400HZ[5]~200 at LCCOMB_X59_Y21_N22
+C1L40 = C1_CLK_COUNT_400HZ[5] & !C1L38 # !C1_CLK_COUNT_400HZ[5] & (C1L38 # GND);
+
+--C1L41 is LCD_Display:inst1|CLK_COUNT_400HZ[5]~304 at LCCOMB_X59_Y21_N22
+C1L41 = CARRY(!C1L38 # !C1_CLK_COUNT_400HZ[5]);
+
+
+--C1L43 is LCD_Display:inst1|CLK_COUNT_400HZ[6]~201 at LCCOMB_X59_Y21_N24
+C1L43 = C1_CLK_COUNT_400HZ[6] & (C1L41 $ GND) # !C1_CLK_COUNT_400HZ[6] & !C1L41 & VCC;
+
+--C1L44 is LCD_Display:inst1|CLK_COUNT_400HZ[6]~305 at LCCOMB_X59_Y21_N24
+C1L44 = CARRY(C1_CLK_COUNT_400HZ[6] & !C1L41);
+
+
+--C1L46 is LCD_Display:inst1|CLK_COUNT_400HZ[7]~198 at LCCOMB_X59_Y21_N26
+C1L46 = C1_CLK_COUNT_400HZ[7] & !C1L44 # !C1_CLK_COUNT_400HZ[7] & (C1L44 # GND);
+
+--C1L47 is LCD_Display:inst1|CLK_COUNT_400HZ[7]~306 at LCCOMB_X59_Y21_N26
+C1L47 = CARRY(!C1L44 # !C1_CLK_COUNT_400HZ[7]);
+
+
+--C1L49 is LCD_Display:inst1|CLK_COUNT_400HZ[8]~199 at LCCOMB_X59_Y21_N28
+C1L49 = C1_CLK_COUNT_400HZ[8] & (C1L47 $ GND) # !C1_CLK_COUNT_400HZ[8] & !C1L47 & VCC;
+
+--C1L50 is LCD_Display:inst1|CLK_COUNT_400HZ[8]~307 at LCCOMB_X59_Y21_N28
+C1L50 = CARRY(C1_CLK_COUNT_400HZ[8] & !C1L47);
+
+
+--C1L52 is LCD_Display:inst1|CLK_COUNT_400HZ[9]~197 at LCCOMB_X59_Y21_N30
+C1L52 = C1_CLK_COUNT_400HZ[9] & !C1L50 # !C1_CLK_COUNT_400HZ[9] & (C1L50 # GND);
+
+--C1L53 is LCD_Display:inst1|CLK_COUNT_400HZ[9]~308 at LCCOMB_X59_Y21_N30
+C1L53 = CARRY(!C1L50 # !C1_CLK_COUNT_400HZ[9]);
+
+
+--C1L55 is LCD_Display:inst1|CLK_COUNT_400HZ[10]~196 at LCCOMB_X59_Y20_N0
+C1L55 = C1_CLK_COUNT_400HZ[10] & (C1L53 $ GND) # !C1_CLK_COUNT_400HZ[10] & !C1L53 & VCC;
+
+--C1L56 is LCD_Display:inst1|CLK_COUNT_400HZ[10]~309 at LCCOMB_X59_Y20_N0
+C1L56 = CARRY(C1_CLK_COUNT_400HZ[10] & !C1L53);
+
+
+--C1L58 is LCD_Display:inst1|CLK_COUNT_400HZ[11]~195 at LCCOMB_X59_Y20_N2
+C1L58 = C1_CLK_COUNT_400HZ[11] & !C1L56 # !C1_CLK_COUNT_400HZ[11] & (C1L56 # GND);
+
+--C1L59 is LCD_Display:inst1|CLK_COUNT_400HZ[11]~310 at LCCOMB_X59_Y20_N2
+C1L59 = CARRY(!C1L56 # !C1_CLK_COUNT_400HZ[11]);
+
+
+--C1L61 is LCD_Display:inst1|CLK_COUNT_400HZ[12]~194 at LCCOMB_X59_Y20_N4
+C1L61 = C1_CLK_COUNT_400HZ[12] & (C1L59 $ GND) # !C1_CLK_COUNT_400HZ[12] & !C1L59 & VCC;
+
+--C1L62 is LCD_Display:inst1|CLK_COUNT_400HZ[12]~311 at LCCOMB_X59_Y20_N4
+C1L62 = CARRY(C1_CLK_COUNT_400HZ[12] & !C1L59);
+
+
+--C1L64 is LCD_Display:inst1|CLK_COUNT_400HZ[13]~191 at LCCOMB_X59_Y20_N6
+C1L64 = C1_CLK_COUNT_400HZ[13] & !C1L62 # !C1_CLK_COUNT_400HZ[13] & (C1L62 # GND);
+
+--C1L65 is LCD_Display:inst1|CLK_COUNT_400HZ[13]~312 at LCCOMB_X59_Y20_N6
+C1L65 = CARRY(!C1L62 # !C1_CLK_COUNT_400HZ[13]);
+
+
+--C1L67 is LCD_Display:inst1|CLK_COUNT_400HZ[14]~192 at LCCOMB_X59_Y20_N8
+C1L67 = C1_CLK_COUNT_400HZ[14] & (C1L65 $ GND) # !C1_CLK_COUNT_400HZ[14] & !C1L65 & VCC;
+
+--C1L68 is LCD_Display:inst1|CLK_COUNT_400HZ[14]~313 at LCCOMB_X59_Y20_N8
+C1L68 = CARRY(C1_CLK_COUNT_400HZ[14] & !C1L65);
+
+
+--C1L70 is LCD_Display:inst1|CLK_COUNT_400HZ[15]~193 at LCCOMB_X59_Y20_N10
+C1L70 = C1_CLK_COUNT_400HZ[15] & !C1L68 # !C1_CLK_COUNT_400HZ[15] & (C1L68 # GND);
+
+--C1L71 is LCD_Display:inst1|CLK_COUNT_400HZ[15]~314 at LCCOMB_X59_Y20_N10
+C1L71 = CARRY(!C1L68 # !C1_CLK_COUNT_400HZ[15]);
+
+
+--C1L73 is LCD_Display:inst1|CLK_COUNT_400HZ[16]~187 at LCCOMB_X59_Y20_N12
+C1L73 = C1_CLK_COUNT_400HZ[16] & (C1L71 $ GND) # !C1_CLK_COUNT_400HZ[16] & !C1L71 & VCC;
+
+--C1L74 is LCD_Display:inst1|CLK_COUNT_400HZ[16]~315 at LCCOMB_X59_Y20_N12
+C1L74 = CARRY(C1_CLK_COUNT_400HZ[16] & !C1L71);
+
+
+--C1L35 is LCD_Display:inst1|CLK_COUNT_400HZ[3]~316 at LCCOMB_X59_Y19_N0
+C1L35 = !C1L108 # !SW8;
+
+
+--C1L76 is LCD_Display:inst1|CLK_COUNT_400HZ[17]~188 at LCCOMB_X59_Y20_N14
+C1L76 = C1_CLK_COUNT_400HZ[17] & !C1L74 # !C1_CLK_COUNT_400HZ[17] & (C1L74 # GND);
+
+--C1L77 is LCD_Display:inst1|CLK_COUNT_400HZ[17]~317 at LCCOMB_X59_Y20_N14
+C1L77 = CARRY(!C1L74 # !C1_CLK_COUNT_400HZ[17]);
+
+
+--C1L79 is LCD_Display:inst1|CLK_COUNT_400HZ[18]~189 at LCCOMB_X59_Y20_N16
+C1L79 = C1_CLK_COUNT_400HZ[18] & (C1L77 $ GND) # !C1_CLK_COUNT_400HZ[18] & !C1L77 & VCC;
+
+--C1L80 is LCD_Display:inst1|CLK_COUNT_400HZ[18]~318 at LCCOMB_X59_Y20_N16
+C1L80 = CARRY(C1_CLK_COUNT_400HZ[18] & !C1L77);
+
+
+--C1L82 is LCD_Display:inst1|CLK_COUNT_400HZ[19]~190 at LCCOMB_X59_Y20_N18
+C1L82 = C1L80 $ C1_CLK_COUNT_400HZ[19];
+
+
+--C1L138 is LCD_Display:inst1|Selector2~43 at LCCOMB_X23_Y28_N24
+C1L138 = C1_state.return_home # C1_state.line2 # !C1L101 & C1_DATA_BUS_VALUE[7];
+
+
+--C1L110 is LCD_Display:inst1|Mux0~33 at LCCOMB_X22_Y28_N6
+C1L110 = C1_CHAR_COUNT[2] & (C1_CHAR_COUNT[0] # C1_CHAR_COUNT[4] # C1_CHAR_COUNT[1]) # !C1_CHAR_COUNT[2] & (C1_CHAR_COUNT[4] & C1_CHAR_COUNT[1]);
+
+
+--C1L111 is LCD_Display:inst1|Mux1~83 at LCCOMB_X22_Y28_N12
+C1L111 = C1_CHAR_COUNT[2] & (C1_CHAR_COUNT[4] # !C1_CHAR_COUNT[1]) # !C1_CHAR_COUNT[2] & (C1_CHAR_COUNT[1] # C1_CHAR_COUNT[0] & !C1_CHAR_COUNT[4]);
+
+
+--C1L112 is LCD_Display:inst1|Mux2~29 at LCCOMB_X22_Y28_N10
+C1L112 = C1_CHAR_COUNT[2] & (!C1_CHAR_COUNT[4] & !C1_CHAR_COUNT[1]) # !C1_CHAR_COUNT[2] & !C1_CHAR_COUNT[0] & (C1_CHAR_COUNT[1]);
+
+
+--C1L95 is LCD_Display:inst1|Equal0~38 at LCCOMB_X22_Y28_N26
+C1L95 = !C1L111 & !C1_CHAR_COUNT[3] & !C1L112 & C1L110;
+
+
+--C1L93 is LCD_Display:inst1|DATA_BUS_VALUE~532 at LCCOMB_X21_Y27_N4
+C1L93 = C1_CHAR_COUNT[3] # C1L110;
+
+
+--C1L117 is LCD_Display:inst1|Mux4~371 at LCCOMB_X22_Y28_N28
+C1L117 = !C1_CHAR_COUNT[2] & !C1_CHAR_COUNT[3];
+
+
+--G1_safe_q[1] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[1] at LCFF_X21_Y28_N15
+G1_safe_q[1] = DFFEAS(G1_counter_comb_bita1, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--G1_safe_q[5] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[5] at LCFF_X21_Y28_N23
+G1_safe_q[5] = DFFEAS(G1_counter_comb_bita5, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L121 is LCD_Display:inst1|Mux5~408 at LCCOMB_X20_Y28_N10
+C1L121 = C1_CHAR_COUNT[1] & (C1_CHAR_COUNT[0] & G1_safe_q[1] # !C1_CHAR_COUNT[0] & (G1_safe_q[5]));
+
+
+--C1L122 is LCD_Display:inst1|Mux5~409 at LCCOMB_X23_Y28_N20
+C1L122 = C1_CHAR_COUNT[4] $ (!C1_CHAR_COUNT[0] & C1_CHAR_COUNT[1]);
+
+
+--C1L114 is LCD_Display:inst1|Mux3~314 at LCCOMB_X22_Y28_N14
+C1L114 = C1_CHAR_COUNT[4] # C1_CHAR_COUNT[3] # !C1_CHAR_COUNT[2];
+
+
+--C1L123 is LCD_Display:inst1|Mux5~410 at LCCOMB_X20_Y28_N2
+C1L123 = C1L117 & (!C1L114 & C1L121 # !C1L122) # !C1L117 & !C1L114 & (C1L121);
+
+
+--C1L118 is LCD_Display:inst1|Mux4~372 at LCCOMB_X23_Y28_N2
+C1L118 = C1_CHAR_COUNT[1] & (!C1_CHAR_COUNT[4]) # !C1_CHAR_COUNT[1] & (C1_CHAR_COUNT[0] # C1_CHAR_COUNT[4]);
+
+
+--G1_safe_q[2] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[2] at LCFF_X21_Y28_N17
+G1_safe_q[2] = DFFEAS(G1_counter_comb_bita2, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--G1_safe_q[6] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[6] at LCFF_X21_Y28_N25
+G1_safe_q[6] = DFFEAS(G1_counter_comb_bita6, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L119 is LCD_Display:inst1|Mux4~373 at LCCOMB_X20_Y28_N12
+C1L119 = C1_CHAR_COUNT[0] & G1_safe_q[2] # !C1_CHAR_COUNT[0] & (G1_safe_q[6]) # !C1_CHAR_COUNT[1];
+
+
+--C1L120 is LCD_Display:inst1|Mux4~374 at LCCOMB_X20_Y28_N16
+C1L120 = C1L117 & (C1L118 # !C1L114 & C1L119) # !C1L117 & !C1L114 & (C1L119);
+
+
+--G1_safe_q[3] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[3] at LCFF_X21_Y28_N19
+G1_safe_q[3] = DFFEAS(G1_counter_comb_bita3, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--G1_safe_q[7] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[7] at LCFF_X21_Y28_N27
+G1_safe_q[7] = DFFEAS(G1_counter_comb_bita7, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L115 is LCD_Display:inst1|Mux3~315 at LCCOMB_X20_Y28_N6
+C1L115 = C1_CHAR_COUNT[0] & (G1_safe_q[3] # !C1L113) # !C1_CHAR_COUNT[0] & C1L113 & G1_safe_q[7];
+
+
+--C1L116 is LCD_Display:inst1|Mux3~316 at LCCOMB_X20_Y28_N4
+C1L116 = !C1_CHAR_COUNT[3] & !C1_CHAR_COUNT[4] & C1L115;
+
+
+--C1L109 is LCD_Display:inst1|LessThan1~76 at LCCOMB_X20_Y28_N26
+C1L109 = !C1L120 & !C1L123 # !C1L116;
+
+
+--C1L139 is LCD_Display:inst1|Selector3~253 at LCCOMB_X20_Y28_N0
+C1L139 = C1_state.print_string & (C1L95 & (!C1L109) # !C1L95 & !C1L93);
+
+
+--C1L140 is LCD_Display:inst1|Selector3~254 at LCCOMB_X20_Y28_N20
+C1L140 = C1_state.line2 # C1L139 # !C1L101 & C1_DATA_BUS_VALUE[6];
+
+
+--C1L142 is LCD_Display:inst1|Selector4~267 at LCCOMB_X20_Y28_N22
+C1L142 = C1L111 # C1_CHAR_COUNT[3] # C1L95 & C1L109;
+
+
+--C1_state.display_clear is LCD_Display:inst1|state.display_clear at LCFF_X21_Y27_N31
+C1_state.display_clear = DFFEAS(C1L193, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.display_on is LCD_Display:inst1|state.display_on at LCFF_X20_Y27_N5
+C1_state.display_on = DFFEAS(C1L194, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.display_off is LCD_Display:inst1|state.display_off at LCFF_X21_Y27_N27
+C1_state.display_off = DFFEAS(C1L195, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L143 is LCD_Display:inst1|Selector4~268 at LCCOMB_X21_Y27_N0
+C1L143 = !C1_state.display_clear & !C1_state.display_on & !C1_state.display_off;
+
+
+--C1L144 is LCD_Display:inst1|Selector4~269 at LCCOMB_X20_Y28_N28
+C1L144 = C1_state.print_string & (!C1L142) # !C1_state.print_string & (!C1L143 # !C1L141);
+
+
+--C1L145 is LCD_Display:inst1|Selector5~234 at LCCOMB_X22_Y28_N0
+C1L145 = C1L112 & (C1L95 & C1L109 # !C1_CHAR_COUNT[3]) # !C1L112 & C1L95 & (C1L109);
+
+
+--C1L146 is LCD_Display:inst1|Selector5~235 at LCCOMB_X22_Y28_N2
+C1L146 = C1_state.print_string & (!C1L145) # !C1_state.print_string & (!C1L143 # !C1L141);
+
+
+--G1_safe_q[0] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[0] at LCFF_X21_Y28_N13
+G1_safe_q[0] = DFFEAS(G1_counter_comb_bita0, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--G1_safe_q[4] is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|safe_q[4] at LCFF_X21_Y28_N21
+G1_safe_q[4] = DFFEAS(G1_counter_comb_bita4, GLOBAL(E1L3), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L124 is LCD_Display:inst1|Mux6~344 at LCCOMB_X21_Y28_N4
+C1L124 = C1_CHAR_COUNT[0] & (G1_safe_q[0] # !C1_CHAR_COUNT[1]) # !C1_CHAR_COUNT[0] & C1_CHAR_COUNT[1] & G1_safe_q[4];
+
+
+--C1L125 is LCD_Display:inst1|Mux6~345 at LCCOMB_X22_Y28_N30
+C1L125 = C1_CHAR_COUNT[0] & C1_CHAR_COUNT[1] # !C1_CHAR_COUNT[0] & (C1_CHAR_COUNT[4]) # !C1L117;
+
+
+--C1L126 is LCD_Display:inst1|Mux6~346 at LCCOMB_X22_Y28_N4
+C1L126 = !C1L114 & C1L124 # !C1L125;
+
+
+--C1L1 is LCD_Display:inst1|Add1~324 at LCCOMB_X21_Y28_N2
+C1L1 = C1L123 # C1L120 # C1L126;
+
+
+--C1L94 is LCD_Display:inst1|DATA_BUS_VALUE~533 at LCCOMB_X20_Y28_N14
+C1L94 = C1L95 & C1L116 & (C1L120 # C1L123);
+
+
+--C1L147 is LCD_Display:inst1|Selector6~217 at LCCOMB_X21_Y28_N6
+C1L147 = C1_state.print_string & (C1L116 $ (C1L94 & C1L1));
+
+
+--C1_state.reset1 is LCD_Display:inst1|state.reset1 at LCFF_X21_Y27_N17
+C1_state.reset1 = DFFEAS(C1L185, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L148 is LCD_Display:inst1|Selector6~218 at LCCOMB_X21_Y27_N20
+C1L148 = !C1_DATA_BUS_VALUE[3] & (C1_state.hold # C1_state.drop_lcd_e) # !C1_state.reset1;
+
+
+--C1_state.reset3 is LCD_Display:inst1|state.reset3 at LCFF_X21_Y27_N9
+C1_state.reset3 = DFFEAS(C1L196, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.func_set is LCD_Display:inst1|state.func_set at LCFF_X21_Y27_N7
+C1_state.func_set = DFFEAS(C1L197, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1_state.reset2 is LCD_Display:inst1|state.reset2 at LCFF_X21_Y27_N15
+C1_state.reset2 = DFFEAS(C1L198, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L149 is LCD_Display:inst1|Selector6~219 at LCCOMB_X21_Y27_N10
+C1L149 = C1_state.display_on # C1_state.display_off # C1_state.reset2 # C1_state.func_set;
+
+
+--C1L150 is LCD_Display:inst1|Selector6~220 at LCCOMB_X21_Y28_N10
+C1L150 = !C1_state.reset3 & !C1L149 & !C1L148 & !C1L147;
+
+
+--C1L2 is LCD_Display:inst1|Add1~325 at LCCOMB_X21_Y28_N30
+C1L2 = C1L123 # !C1L114 & C1L124 # !C1L125;
+
+
+--C1L151 is LCD_Display:inst1|Selector7~181 at LCCOMB_X21_Y28_N0
+C1L151 = C1_state.print_string & (C1L120 $ (C1L94 & !C1L2));
+
+
+--C1L152 is LCD_Display:inst1|Selector7~182 at LCCOMB_X21_Y28_N28
+C1L152 = C1_DATA_BUS_VALUE[2] & (C1_state.drop_lcd_e # C1_state.hold);
+
+
+--C1L153 is LCD_Display:inst1|Selector7~183 at LCCOMB_X21_Y28_N8
+C1L153 = C1_state.display_on # C1L152 # C1_state.mode_set # C1L151;
+
+
+--C1L154 is LCD_Display:inst1|Selector8~158 at LCCOMB_X20_Y28_N30
+C1L154 = C1_state.print_string & (C1L123 $ (C1L94 & !C1L126));
+
+
+--C1L155 is LCD_Display:inst1|Selector8~159 at LCCOMB_X20_Y28_N24
+C1L155 = C1_state.mode_set # C1L154 # !C1L101 & C1_DATA_BUS_VALUE[1];
+
+
+--C1L156 is LCD_Display:inst1|Selector9~180 at LCCOMB_X20_Y27_N22
+C1L156 = C1_state.display_clear # C1_DATA_BUS_VALUE[0] & (C1_state.drop_lcd_e # C1_state.hold);
+
+
+--C1L157 is LCD_Display:inst1|Selector9~181 at LCCOMB_X20_Y28_N18
+C1L157 = C1L126 $ (C1L95 & !C1L109);
+
+
+--C1L158 is LCD_Display:inst1|Selector9~182 at LCCOMB_X20_Y28_N8
+C1L158 = C1L156 # C1_state.print_string & C1L157;
+
+
+--C1L5 is LCD_Display:inst1|CHAR_COUNT[0]~43 at LCCOMB_X22_Y28_N16
+C1L5 = C1_CHAR_COUNT[0] $ VCC;
+
+--C1L6 is LCD_Display:inst1|CHAR_COUNT[0]~157 at LCCOMB_X22_Y28_N16
+C1L6 = CARRY(C1_CHAR_COUNT[0]);
+
+
+--C1L8 is LCD_Display:inst1|CHAR_COUNT[1]~44 at LCCOMB_X22_Y28_N18
+C1L8 = C1_CHAR_COUNT[1] & !C1L6 # !C1_CHAR_COUNT[1] & (C1L6 # GND);
+
+--C1L9 is LCD_Display:inst1|CHAR_COUNT[1]~158 at LCCOMB_X22_Y28_N18
+C1L9 = CARRY(!C1L6 # !C1_CHAR_COUNT[1]);
+
+
+--C1L11 is LCD_Display:inst1|CHAR_COUNT[2]~45 at LCCOMB_X22_Y28_N20
+C1L11 = C1_CHAR_COUNT[2] & (C1L9 $ GND) # !C1_CHAR_COUNT[2] & !C1L9 & VCC;
+
+--C1L12 is LCD_Display:inst1|CHAR_COUNT[2]~159 at LCCOMB_X22_Y28_N20
+C1L12 = CARRY(C1_CHAR_COUNT[2] & !C1L9);
+
+
+--C1L14 is LCD_Display:inst1|CHAR_COUNT[3]~46 at LCCOMB_X22_Y28_N22
+C1L14 = C1_CHAR_COUNT[3] & !C1L12 # !C1_CHAR_COUNT[3] & (C1L12 # GND);
+
+--C1L15 is LCD_Display:inst1|CHAR_COUNT[3]~160 at LCCOMB_X22_Y28_N22
+C1L15 = CARRY(!C1L12 # !C1_CHAR_COUNT[3]);
+
+
+--C1L17 is LCD_Display:inst1|CHAR_COUNT[4]~47 at LCCOMB_X22_Y28_N24
+C1L17 = C1_CHAR_COUNT[4] $ !C1L15;
+
+
+--C1L170 is LCD_Display:inst1|Selector22~17 at LCCOMB_X23_Y28_N14
+C1L170 = C1_CHAR_COUNT[4] & C1_state.reset1;
+
+
+--C1L173 is LCD_Display:inst1|Selector25~17 at LCCOMB_X23_Y28_N10
+C1L173 = C1_CHAR_COUNT[1] & C1_state.reset1;
+
+
+--C1L172 is LCD_Display:inst1|Selector24~17 at LCCOMB_X22_Y27_N8
+C1L172 = C1_CHAR_COUNT[2] & C1_state.reset1;
+
+
+--C1L174 is LCD_Display:inst1|Selector26~17 at LCCOMB_X23_Y28_N8
+C1L174 = C1_CHAR_COUNT[0] & C1_state.reset1;
+
+
+--C1L171 is LCD_Display:inst1|Selector23~17 at LCCOMB_X21_Y27_N24
+C1L171 = C1_state.reset1 & C1_CHAR_COUNT[3];
+
+
+--C1_next_command.mode_set is LCD_Display:inst1|next_command.mode_set at LCFF_X20_Y27_N19
+C1_next_command.mode_set = DFFEAS(C1L161, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L190 is LCD_Display:inst1|state~147 at LCCOMB_X20_Y27_N24
+C1L190 = C1_state.hold & C1_next_command.mode_set;
+
+
+--C1_next_command.line2 is LCD_Display:inst1|next_command.line2 at LCFF_X23_Y28_N23
+C1_next_command.line2 = DFFEAS(C1L164, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L191 is LCD_Display:inst1|state~148 at LCCOMB_X23_Y28_N26
+C1L191 = C1_state.hold & C1_next_command.line2;
+
+
+--C1_next_command.return_home is LCD_Display:inst1|next_command.return_home at LCFF_X23_Y28_N31
+C1_next_command.return_home = DFFEAS(C1L165, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L192 is LCD_Display:inst1|state~149 at LCCOMB_X23_Y28_N12
+C1L192 = C1_state.hold & C1_next_command.return_home;
+
+
+--E1_pb_debounced is debounce:inst3|pb_debounced at LCFF_X59_Y19_N21
+E1_pb_debounced = DFFEAS(E1L1, B1_clock_100Hz,  ,  ,  ,  ,  ,  ,  );
+
+
+--G1_counter_comb_bita0 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita0 at LCCOMB_X21_Y28_N12
+G1_counter_comb_bita0 = G1_safe_q[0] $ VCC;
+
+--G1L2 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita0~COUT at LCCOMB_X21_Y28_N12
+G1L2 = CARRY(G1_safe_q[0]);
+
+
+--G1_counter_comb_bita1 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita1 at LCCOMB_X21_Y28_N14
+G1_counter_comb_bita1 = G1_safe_q[1] & !G1L2 # !G1_safe_q[1] & (G1L2 # GND);
+
+--G1L4 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita1~COUT at LCCOMB_X21_Y28_N14
+G1L4 = CARRY(!G1L2 # !G1_safe_q[1]);
+
+
+--G1_counter_comb_bita2 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita2 at LCCOMB_X21_Y28_N16
+G1_counter_comb_bita2 = G1_safe_q[2] & (G1L4 $ GND) # !G1_safe_q[2] & !G1L4 & VCC;
+
+--G1L6 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita2~COUT at LCCOMB_X21_Y28_N16
+G1L6 = CARRY(G1_safe_q[2] & !G1L4);
+
+
+--G1_counter_comb_bita3 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita3 at LCCOMB_X21_Y28_N18
+G1_counter_comb_bita3 = G1_safe_q[3] & !G1L6 # !G1_safe_q[3] & (G1L6 # GND);
+
+--G1L8 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita3~COUT at LCCOMB_X21_Y28_N18
+G1L8 = CARRY(!G1L6 # !G1_safe_q[3]);
+
+
+--G1_counter_comb_bita4 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita4 at LCCOMB_X21_Y28_N20
+G1_counter_comb_bita4 = G1_safe_q[4] & (G1L8 $ GND) # !G1_safe_q[4] & !G1L8 & VCC;
+
+--G1L10 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita4~COUT at LCCOMB_X21_Y28_N20
+G1L10 = CARRY(G1_safe_q[4] & !G1L8);
+
+
+--G1_counter_comb_bita5 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita5 at LCCOMB_X21_Y28_N22
+G1_counter_comb_bita5 = G1_safe_q[5] & !G1L10 # !G1_safe_q[5] & (G1L10 # GND);
+
+--G1L12 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita5~COUT at LCCOMB_X21_Y28_N22
+G1L12 = CARRY(!G1L10 # !G1_safe_q[5]);
+
+
+--G1_counter_comb_bita6 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita6 at LCCOMB_X21_Y28_N24
+G1_counter_comb_bita6 = G1_safe_q[6] & (G1L12 $ GND) # !G1_safe_q[6] & !G1L12 & VCC;
+
+--G1L14 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita6~COUT at LCCOMB_X21_Y28_N24
+G1L14 = CARRY(G1_safe_q[6] & !G1L12);
+
+
+--G1_counter_comb_bita7 is lpm_counter0:inst2|lpm_counter:lpm_counter_component|cntr_u2i:auto_generated|counter_comb_bita7 at LCCOMB_X21_Y28_N26
+G1_counter_comb_bita7 = G1L14 $ G1_safe_q[7];
+
+
+--C1_next_command.display_clear is LCD_Display:inst1|next_command.display_clear at LCFF_X21_Y27_N19
+C1_next_command.display_clear = DFFEAS(C1L169, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L193 is LCD_Display:inst1|state~150 at LCCOMB_X21_Y27_N30
+C1L193 = C1_state.hold & C1_next_command.display_clear;
+
+
+--C1_next_command.display_on is LCD_Display:inst1|next_command.display_on at LCFF_X20_Y27_N13
+C1_next_command.display_on = DFFEAS(C1L160, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L194 is LCD_Display:inst1|state~151 at LCCOMB_X20_Y27_N4
+C1L194 = C1_state.hold & C1_next_command.display_on;
+
+
+--C1_next_command.display_off is LCD_Display:inst1|next_command.display_off at LCFF_X21_Y27_N3
+C1_next_command.display_off = DFFEAS(C1L168, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L195 is LCD_Display:inst1|state~152 at LCCOMB_X21_Y27_N26
+C1L195 = C1_state.hold & C1_next_command.display_off;
+
+
+--C1_next_command.reset3 is LCD_Display:inst1|next_command.reset3 at LCFF_X21_Y27_N29
+C1_next_command.reset3 = DFFEAS(C1L167, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L196 is LCD_Display:inst1|state~153 at LCCOMB_X21_Y27_N8
+C1L196 = C1_state.hold & C1_next_command.reset3;
+
+
+--C1_next_command.func_set is LCD_Display:inst1|next_command.func_set at LCFF_X21_Y27_N23
+C1_next_command.func_set = DFFEAS(C1L159, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L197 is LCD_Display:inst1|state~154 at LCCOMB_X21_Y27_N6
+C1L197 = C1_state.hold & C1_next_command.func_set;
+
+
+--C1_next_command.reset2 is LCD_Display:inst1|next_command.reset2 at LCFF_X21_Y27_N13
+C1_next_command.reset2 = DFFEAS(C1L166, GLOBAL(C1L21), GLOBAL(A1L18),  ,  ,  ,  ,  ,  );
+
+
+--C1L198 is LCD_Display:inst1|state~155 at LCCOMB_X21_Y27_N14
+C1L198 = C1_state.hold & !C1_next_command.reset2;
+
+
+--C1L161 is LCD_Display:inst1|Selector14~38 at LCCOMB_X20_Y27_N18
+C1L161 = C1_state.display_on # C1_next_command.mode_set & (C1_state.drop_lcd_e # C1_state.hold);
+
+
+--C1L164 is LCD_Display:inst1|Selector16~40 at LCCOMB_X23_Y28_N22
+C1L164 = C1L96 & (C1_state.print_string # !C1L101 & C1_next_command.line2) # !C1L96 & !C1L101 & C1_next_command.line2;
+
+
+--C1L165 is LCD_Display:inst1|Selector17~40 at LCCOMB_X23_Y28_N30
+C1L165 = C1L101 & C1L97 & (C1_state.print_string) # !C1L101 & (C1_next_command.return_home # C1L97 & C1_state.print_string);
+
+
+--E1_SHIFT_PB[0] is debounce:inst3|SHIFT_PB[0] at LCFF_X60_Y19_N9
+E1_SHIFT_PB[0] = DFFEAS(E1L6, GLOBAL(B1L20),  ,  ,  ,  ,  ,  ,  );
+
+
+--E1_SHIFT_PB[1] is debounce:inst3|SHIFT_PB[1] at LCFF_X60_Y19_N11
+E1_SHIFT_PB[1] = DFFEAS(E1L8, GLOBAL(B1L20),  ,  ,  ,  ,  ,  ,  );
+
+
+--E1_SHIFT_PB[2] is debounce:inst3|SHIFT_PB[2] at LCFF_X60_Y19_N31
+E1_SHIFT_PB[2] = DFFEAS(E1L10, GLOBAL(B1L20),  ,  ,  ,  ,  ,  ,  );
+
+
+--E1_SHIFT_PB[3] is debounce:inst3|SHIFT_PB[3] at LCFF_X60_Y19_N27
+E1_SHIFT_PB[3] = DFFEAS(E1L12, GLOBAL(B1L20),  ,  ,  ,  ,  ,  ,  );
+
+
+--E1L1 is debounce:inst3|Equal0~34 at LCCOMB_X59_Y19_N20
+E1L1 = E1_SHIFT_PB[3] # E1_SHIFT_PB[1] # E1_SHIFT_PB[0] # E1_SHIFT_PB[2];
+
+
+--B1_clock_100Hz is clk_div:inst|clock_100Hz at LCFF_X59_Y19_N25
+B1_clock_100Hz = DFFEAS(B1L21, CLK_48Mhz,  ,  ,  ,  ,  ,  ,  );
+
+
+--C1L169 is LCD_Display:inst1|Selector21~38 at LCCOMB_X21_Y27_N18
+C1L169 = C1_state.display_off # C1_next_command.display_clear & (C1_state.hold # C1_state.drop_lcd_e);
+
+
+--C1L160 is LCD_Display:inst1|Selector13~38 at LCCOMB_X20_Y27_N12
+C1L160 = C1_state.display_clear # C1_next_command.display_on & (C1_state.drop_lcd_e # C1_state.hold);
+
+
+--C1L168 is LCD_Display:inst1|Selector20~38 at LCCOMB_X21_Y27_N2
+C1L168 = C1_state.func_set # C1_next_command.display_off & (C1_state.hold # C1_state.drop_lcd_e);
+
+
+--C1L167 is LCD_Display:inst1|Selector19~38 at LCCOMB_X21_Y27_N28
+C1L167 = C1_state.reset2 # C1_next_command.reset3 & (C1_state.hold # C1_state.drop_lcd_e);
+
+
+--C1L159 is LCD_Display:inst1|Selector12~38 at LCCOMB_X21_Y27_N22
+C1L159 = C1_state.reset3 # C1_next_command.func_set & (C1_state.hold # C1_state.drop_lcd_e);
+
+
+--C1L166 is LCD_Display:inst1|Selector18~38 at LCCOMB_X21_Y27_N12
+C1L166 = C1_state.reset1 & (C1_next_command.reset2 # !C1_state.hold & !C1_state.drop_lcd_e);
+
+
+--B1_clock_100hz_reg is clk_div:inst|clock_100hz_reg at LCFF_X58_Y21_N9
+B1_clock_100hz_reg = DFFEAS(B1L19, GLOBAL(A1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_clock_100hz_int is clk_div:inst|clock_100hz_int at LCFF_X58_Y21_N1
+B1_clock_100hz_int = DFFEAS(B1L17, GLOBAL(B1L4),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100hz[0] is clk_div:inst|count_100hz[0] at LCFF_X58_Y21_N23
+B1_count_100hz[0] = DFFEAS(B1L68, GLOBAL(B1L4),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100hz[1] is clk_div:inst|count_100hz[1] at LCFF_X58_Y21_N7
+B1_count_100hz[1] = DFFEAS(B1L66, GLOBAL(B1L4),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100hz[2] is clk_div:inst|count_100hz[2] at LCFF_X58_Y21_N11
+B1_count_100hz[2] = DFFEAS(B1L69, GLOBAL(B1L4),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L17 is clk_div:inst|clock_100hz_int~23 at LCCOMB_X58_Y21_N0
+B1L17 = B1_clock_100hz_int $ (!B1_count_100hz[1] & !B1_count_100hz[0] & B1_count_100hz[2]);
+
+
+--B1_clock_1Khz_reg is clk_div:inst|clock_1Khz_reg at LCFF_X59_Y19_N27
+B1_clock_1Khz_reg = DFFEAS(B1L5, CLK_48Mhz,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L68 is clk_div:inst|count_100hz~56 at LCCOMB_X58_Y21_N22
+B1L68 = !B1_count_100hz[0] & (B1_count_100hz[1] # !B1_count_100hz[2]);
+
+
+--B1L66 is clk_div:inst|count_100hz[1]~57 at LCCOMB_X58_Y21_N6
+B1L66 = B1_count_100hz[1] $ B1_count_100hz[0];
+
+
+--B1L69 is clk_div:inst|count_100hz~58 at LCCOMB_X58_Y21_N10
+B1L69 = B1_count_100hz[1] & (B1_count_100hz[2] $ B1_count_100hz[0]) # !B1_count_100hz[1] & B1_count_100hz[2] & B1_count_100hz[0];
+
+
+--B1_clock_1Khz_int is clk_div:inst|clock_1Khz_int at LCFF_X61_Y19_N19
+B1_clock_1Khz_int = DFFEAS(B1L2, GLOBAL(B1L13),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_1Khz[0] is clk_div:inst|count_1Khz[0] at LCFF_X61_Y19_N7
+B1_count_1Khz[0] = DFFEAS(B1L32, GLOBAL(B1L13),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_1Khz[1] is clk_div:inst|count_1Khz[1] at LCFF_X61_Y19_N11
+B1_count_1Khz[1] = DFFEAS(B1L30, GLOBAL(B1L13),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_1Khz[2] is clk_div:inst|count_1Khz[2] at LCFF_X61_Y19_N1
+B1_count_1Khz[2] = DFFEAS(B1L33, GLOBAL(B1L13),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L2 is clk_div:inst|clock_1Khz_int~23 at LCCOMB_X61_Y19_N18
+B1L2 = B1_clock_1Khz_int $ (!B1_count_1Khz[0] & B1_count_1Khz[2] & !B1_count_1Khz[1]);
+
+
+--B1_clock_10Khz_reg is clk_div:inst|clock_10Khz_reg at LCFF_X59_Y19_N29
+B1_clock_10Khz_reg = DFFEAS(B1L14, CLK_48Mhz,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L32 is clk_div:inst|count_1Khz~56 at LCCOMB_X61_Y19_N6
+B1L32 = !B1_count_1Khz[0] & (B1_count_1Khz[1] # !B1_count_1Khz[2]);
+
+
+--B1L30 is clk_div:inst|count_1Khz[1]~57 at LCCOMB_X61_Y19_N10
+B1L30 = B1_count_1Khz[1] $ B1_count_1Khz[0];
+
+
+--B1L33 is clk_div:inst|count_1Khz~58 at LCCOMB_X61_Y19_N0
+B1L33 = B1_count_1Khz[0] & (B1_count_1Khz[2] $ B1_count_1Khz[1]) # !B1_count_1Khz[0] & B1_count_1Khz[2] & B1_count_1Khz[1];
+
+
+--B1_clock_10Khz_int is clk_div:inst|clock_10Khz_int at LCFF_X57_Y19_N21
+B1_clock_10Khz_int = DFFEAS(B1L11, GLOBAL(B1L25),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_10Khz[0] is clk_div:inst|count_10Khz[0] at LCFF_X57_Y19_N11
+B1_count_10Khz[0] = DFFEAS(B1L61, GLOBAL(B1L25),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_10Khz[1] is clk_div:inst|count_10Khz[1] at LCFF_X57_Y19_N1
+B1_count_10Khz[1] = DFFEAS(B1L59, GLOBAL(B1L25),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_10Khz[2] is clk_div:inst|count_10Khz[2] at LCFF_X57_Y19_N3
+B1_count_10Khz[2] = DFFEAS(B1L62, GLOBAL(B1L25),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L11 is clk_div:inst|clock_10Khz_int~23 at LCCOMB_X57_Y19_N20
+B1L11 = B1_clock_10Khz_int $ (!B1_count_10Khz[0] & !B1_count_10Khz[1] & B1_count_10Khz[2]);
+
+
+--B1_clock_100Khz_reg is clk_div:inst|clock_100Khz_reg at LCFF_X59_Y19_N15
+B1_clock_100Khz_reg = DFFEAS(B1L26, CLK_48Mhz,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L61 is clk_div:inst|count_10Khz~56 at LCCOMB_X57_Y19_N10
+B1L61 = !B1_count_10Khz[0] & (B1_count_10Khz[1] # !B1_count_10Khz[2]);
+
+
+--B1L59 is clk_div:inst|count_10Khz[1]~57 at LCCOMB_X57_Y19_N0
+B1L59 = B1_count_10Khz[1] $ B1_count_10Khz[0];
+
+
+--B1L62 is clk_div:inst|count_10Khz~58 at LCCOMB_X57_Y19_N2
+B1L62 = B1_count_10Khz[1] & (B1_count_10Khz[2] $ B1_count_10Khz[0]) # !B1_count_10Khz[1] & B1_count_10Khz[2] & B1_count_10Khz[0];
+
+
+--B1_clock_100Khz_int is clk_div:inst|clock_100Khz_int at LCFF_X58_Y19_N15
+B1_clock_100Khz_int = DFFEAS(B1L23, GLOBAL(B1L8),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100Khz[0] is clk_div:inst|count_100Khz[0] at LCFF_X58_Y19_N3
+B1_count_100Khz[0] = DFFEAS(B1L75, GLOBAL(B1L8),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100Khz[1] is clk_div:inst|count_100Khz[1] at LCFF_X58_Y19_N1
+B1_count_100Khz[1] = DFFEAS(B1L73, GLOBAL(B1L8),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_100Khz[2] is clk_div:inst|count_100Khz[2] at LCFF_X58_Y19_N11
+B1_count_100Khz[2] = DFFEAS(B1L76, GLOBAL(B1L8),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L23 is clk_div:inst|clock_100Khz_int~23 at LCCOMB_X58_Y19_N14
+B1L23 = B1_clock_100Khz_int $ (B1_count_100Khz[2] & !B1_count_100Khz[0] & !B1_count_100Khz[1]);
+
+
+--B1_clock_1Mhz_reg is clk_div:inst|clock_1Mhz_reg at LCFF_X59_Y19_N11
+B1_clock_1Mhz_reg = DFFEAS(B1L9, CLK_48Mhz,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L75 is clk_div:inst|count_100Khz~56 at LCCOMB_X58_Y19_N2
+B1L75 = !B1_count_100Khz[0] & (B1_count_100Khz[1] # !B1_count_100Khz[2]);
+
+
+--B1L73 is clk_div:inst|count_100Khz[1]~57 at LCCOMB_X58_Y19_N0
+B1L73 = B1_count_100Khz[1] $ B1_count_100Khz[0];
+
+
+--B1L76 is clk_div:inst|count_100Khz~58 at LCCOMB_X58_Y19_N10
+B1L76 = B1_count_100Khz[0] & (B1_count_100Khz[2] $ B1_count_100Khz[1]) # !B1_count_100Khz[0] & B1_count_100Khz[2] & B1_count_100Khz[1];
+
+
+--B1_clock_1Mhz_int is clk_div:inst|clock_1Mhz_int at LCFF_X58_Y20_N17
+B1_clock_1Mhz_int = DFFEAS(B1L79, GLOBAL(A1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_count_1Mhz[3] is clk_div:inst|count_1Mhz[3] at LCFF_X58_Y20_N25
+B1_count_1Mhz[3] = DFFEAS(B1L45, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1_count_1Mhz[4] is clk_div:inst|count_1Mhz[4] at LCFF_X58_Y20_N27
+B1_count_1Mhz[4] = DFFEAS(B1L48, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1_count_1Mhz[5] is clk_div:inst|count_1Mhz[5] at LCFF_X58_Y20_N29
+B1_count_1Mhz[5] = DFFEAS(B1L51, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1_count_1Mhz[6] is clk_div:inst|count_1Mhz[6] at LCFF_X58_Y20_N31
+B1_count_1Mhz[6] = DFFEAS(B1L54, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1L79 is clk_div:inst|LessThan1~83 at LCCOMB_X58_Y20_N16
+B1L79 = B1_count_1Mhz[6] # B1_count_1Mhz[5] # B1_count_1Mhz[4] & B1_count_1Mhz[3];
+
+
+--B1_count_1Mhz[2] is clk_div:inst|count_1Mhz[2] at LCFF_X58_Y20_N23
+B1_count_1Mhz[2] = DFFEAS(B1L42, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1_count_1Mhz[1] is clk_div:inst|count_1Mhz[1] at LCFF_X58_Y20_N21
+B1_count_1Mhz[1] = DFFEAS(B1L39, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1_count_1Mhz[0] is clk_div:inst|count_1Mhz[0] at LCFF_X58_Y20_N19
+B1_count_1Mhz[0] = DFFEAS(B1L36, GLOBAL(A1L2),  ,  ,  ,  ,  , B1L78,  );
+
+
+--B1L36 is clk_div:inst|count_1Mhz[0]~62 at LCCOMB_X58_Y20_N18
+B1L36 = B1_count_1Mhz[0] $ VCC;
+
+--B1L37 is clk_div:inst|count_1Mhz[0]~100 at LCCOMB_X58_Y20_N18
+B1L37 = CARRY(B1_count_1Mhz[0]);
+
+
+--B1L39 is clk_div:inst|count_1Mhz[1]~63 at LCCOMB_X58_Y20_N20
+B1L39 = B1_count_1Mhz[1] & !B1L37 # !B1_count_1Mhz[1] & (B1L37 # GND);
+
+--B1L40 is clk_div:inst|count_1Mhz[1]~101 at LCCOMB_X58_Y20_N20
+B1L40 = CARRY(!B1L37 # !B1_count_1Mhz[1]);
+
+
+--B1L42 is clk_div:inst|count_1Mhz[2]~64 at LCCOMB_X58_Y20_N22
+B1L42 = B1_count_1Mhz[2] & (B1L40 $ GND) # !B1_count_1Mhz[2] & !B1L40 & VCC;
+
+--B1L43 is clk_div:inst|count_1Mhz[2]~102 at LCCOMB_X58_Y20_N22
+B1L43 = CARRY(B1_count_1Mhz[2] & !B1L40);
+
+
+--B1L45 is clk_div:inst|count_1Mhz[3]~60 at LCCOMB_X58_Y20_N24
+B1L45 = B1_count_1Mhz[3] & !B1L43 # !B1_count_1Mhz[3] & (B1L43 # GND);
+
+--B1L46 is clk_div:inst|count_1Mhz[3]~103 at LCCOMB_X58_Y20_N24
+B1L46 = CARRY(!B1L43 # !B1_count_1Mhz[3]);
+
+
+--B1L77 is clk_div:inst|LessThan0~109 at LCCOMB_X58_Y20_N12
+B1L77 = !B1_count_1Mhz[0] # !B1_count_1Mhz[3] # !B1_count_1Mhz[2] # !B1_count_1Mhz[1];
+
+
+--B1L78 is clk_div:inst|LessThan0~110 at LCCOMB_X58_Y20_N6
+B1L78 = B1_count_1Mhz[6] # B1_count_1Mhz[5] & (B1_count_1Mhz[4] # !B1L77);
+
+
+--B1L48 is clk_div:inst|count_1Mhz[4]~61 at LCCOMB_X58_Y20_N26
+B1L48 = B1_count_1Mhz[4] & (B1L46 $ GND) # !B1_count_1Mhz[4] & !B1L46 & VCC;
+
+--B1L49 is clk_div:inst|count_1Mhz[4]~104 at LCCOMB_X58_Y20_N26
+B1L49 = CARRY(B1_count_1Mhz[4] & !B1L46);
+
+
+--B1L51 is clk_div:inst|count_1Mhz[5]~58 at LCCOMB_X58_Y20_N28
+B1L51 = B1_count_1Mhz[5] & !B1L49 # !B1_count_1Mhz[5] & (B1L49 # GND);
+
+--B1L52 is clk_div:inst|count_1Mhz[5]~105 at LCCOMB_X58_Y20_N28
+B1L52 = CARRY(!B1L49 # !B1_count_1Mhz[5]);
+
+
+--B1L54 is clk_div:inst|count_1Mhz[6]~59 at LCCOMB_X58_Y20_N30
+B1L54 = B1L52 $ !B1_count_1Mhz[6];
+
+
+--E1L12 is debounce:inst3|SHIFT_PB[3]~8 at LCCOMB_X60_Y19_N26
+E1L12 = !SW4;
+
+
+--SW8 is SW8 at PIN_W26
+--operation mode is input
+
+SW8 = INPUT();
+
+
+--CLK_48Mhz is CLK_48Mhz at PIN_N2
+--operation mode is input
+
+CLK_48Mhz = INPUT();
+
+
+--SW4 is SW4 at PIN_N25
+--operation mode is input
+
+SW4 = INPUT();
+
+
+--LCD_RS is LCD_RS at PIN_K1
+--operation mode is output
+
+LCD_RS = OUTPUT(C1_LCD_RS);
+
+
+--LCD_E is LCD_E at PIN_K3
+--operation mode is output
+
+LCD_E = OUTPUT(!C1_LCD_E);
+
+
+--LCD_RW is LCD_RW at PIN_K4
+--operation mode is output
+
+LCD_RW = OUTPUT(!C1_LCD_RW_INT);
+
+
+--DATA_BUS[7] is DATA_BUS[7] at PIN_H3
+--operation mode is bidir
+
+DATA_BUS[7]_tri_out = TRI(C1_DATA_BUS_VALUE[7], C1_LCD_RW_INT);
+DATA_BUS[7] = BIDIR(DATA_BUS[7]_tri_out);
+
+
+--DATA_BUS[6] is DATA_BUS[6] at PIN_H4
+--operation mode is bidir
+
+DATA_BUS[6]_tri_out = TRI(C1_DATA_BUS_VALUE[6], C1_LCD_RW_INT);
+DATA_BUS[6] = BIDIR(DATA_BUS[6]_tri_out);
+
+
+--DATA_BUS[5] is DATA_BUS[5] at PIN_J3
+--operation mode is bidir
+
+DATA_BUS[5]_tri_out = TRI(!C1_DATA_BUS_VALUE[5], C1_LCD_RW_INT);
+DATA_BUS[5] = BIDIR(DATA_BUS[5]_tri_out);
+
+
+--DATA_BUS[4] is DATA_BUS[4] at PIN_J4
+--operation mode is bidir
+
+DATA_BUS[4]_tri_out = TRI(!C1_DATA_BUS_VALUE[4], C1_LCD_RW_INT);
+DATA_BUS[4] = BIDIR(DATA_BUS[4]_tri_out);
+
+
+--DATA_BUS[3] is DATA_BUS[3] at PIN_H2
+--operation mode is bidir
+
+DATA_BUS[3]_tri_out = TRI(!C1_DATA_BUS_VALUE[3], C1_LCD_RW_INT);
+DATA_BUS[3] = BIDIR(DATA_BUS[3]_tri_out);
+
+
+--DATA_BUS[2] is DATA_BUS[2] at PIN_H1
+--operation mode is bidir
+
+DATA_BUS[2]_tri_out = TRI(C1_DATA_BUS_VALUE[2], C1_LCD_RW_INT);
+DATA_BUS[2] = BIDIR(DATA_BUS[2]_tri_out);
+
+
+--DATA_BUS[1] is DATA_BUS[1] at PIN_J2
+--operation mode is bidir
+
+DATA_BUS[1]_tri_out = TRI(C1_DATA_BUS_VALUE[1], C1_LCD_RW_INT);
+DATA_BUS[1] = BIDIR(DATA_BUS[1]_tri_out);
+
+
+--DATA_BUS[0] is DATA_BUS[0] at PIN_J1
+--operation mode is bidir
+
+DATA_BUS[0]_tri_out = TRI(C1_DATA_BUS_VALUE[0], C1_LCD_RW_INT);
+DATA_BUS[0] = BIDIR(DATA_BUS[0]_tri_out);
+
+
+
+
+
+--A1L17 is SW8~clk_delay_ctrl at CLKDELAYCTRL_G7
+A1L17 = CLK_DELAY_CTRL.CLKOUT(.CLK(SW8));
+
+
+--B1L20 is clk_div:inst|clock_100Hz~clkctrl at CLKCTRL_G11
+B1L20 = cycloneii_clkctrl(.INCLK[0] = B1_clock_100Hz) WITH (clock_type = "Global Clock");
+
+
+--E1L3 is debounce:inst3|pb_debounced~clkctrl at CLKCTRL_G10
+E1L3 = cycloneii_clkctrl(.INCLK[0] = E1_pb_debounced) WITH (clock_type = "Global Clock");
+
+
+--C1L21 is LCD_Display:inst1|CLK_400HZ~clkctrl at CLKCTRL_G6
+C1L21 = cycloneii_clkctrl(.INCLK[0] = C1_CLK_400HZ) WITH (clock_type = "Global Clock");
+
+
+--A1L2 is CLK_48Mhz~clkctrl at CLKCTRL_G2
+A1L2 = cycloneii_clkctrl(.INCLK[0] = CLK_48Mhz) WITH (clock_type = "Global Clock");
+
+
+--B1L25 is clk_div:inst|clock_100Khz_reg~clkctrl at CLKCTRL_G4
+B1L25 = cycloneii_clkctrl(.INCLK[0] = B1_clock_100Khz_reg) WITH (clock_type = "Global Clock");
+
+
+--B1L4 is clk_div:inst|clock_1Khz_reg~clkctrl at CLKCTRL_G8
+B1L4 = cycloneii_clkctrl(.INCLK[0] = B1_clock_1Khz_reg) WITH (clock_type = "Global Clock");
+
+
+--B1L8 is clk_div:inst|clock_1Mhz_reg~clkctrl at CLKCTRL_G9
+B1L8 = cycloneii_clkctrl(.INCLK[0] = B1_clock_1Mhz_reg) WITH (clock_type = "Global Clock");
+
+
+--B1L13 is clk_div:inst|clock_10Khz_reg~clkctrl at CLKCTRL_G5
+B1L13 = cycloneii_clkctrl(.INCLK[0] = B1_clock_10Khz_reg) WITH (clock_type = "Global Clock");
+
+
+--A1L18 is SW8~clkctrl at CLKCTRL_G7
+A1L18 = cycloneii_clkctrl(.INCLK[0] = A1L17) WITH (clock_type = "Global Clock");
+
+
+--E1L6 is debounce:inst3|SHIFT_PB[0]~feeder at LCCOMB_X60_Y19_N8
+E1L6 = E1_SHIFT_PB[1];
+
+
+--E1L8 is debounce:inst3|SHIFT_PB[1]~feeder at LCCOMB_X60_Y19_N10
+E1L8 = E1_SHIFT_PB[2];
+
+
+--E1L10 is debounce:inst3|SHIFT_PB[2]~feeder at LCCOMB_X60_Y19_N30
+E1L10 = E1_SHIFT_PB[3];
+
+
+--B1L21 is clk_div:inst|clock_100Hz~feeder at LCCOMB_X59_Y19_N24
+B1L21 = B1_clock_100hz_reg;
+
+
+--B1L19 is clk_div:inst|clock_100hz_reg~feeder at LCCOMB_X58_Y21_N8
+B1L19 = B1_clock_100hz_int;
+
+
+--B1L5 is clk_div:inst|clock_1Khz_reg~feeder at LCCOMB_X59_Y19_N26
+B1L5 = B1_clock_1Khz_int;
+
+
+--B1L14 is clk_div:inst|clock_10Khz_reg~feeder at LCCOMB_X59_Y19_N28
+B1L14 = B1_clock_10Khz_int;
+
+
+--B1L26 is clk_div:inst|clock_100Khz_reg~feeder at LCCOMB_X59_Y19_N14
+B1L26 = B1_clock_100Khz_int;
+
+
+--B1L9 is clk_div:inst|clock_1Mhz_reg~feeder at LCCOMB_X59_Y19_N10
+B1L9 = B1_clock_1Mhz_int;
+
+
+--C1L103 is LCD_Display:inst1|LCD_RW_INT~feeder at LCCOMB_X20_Y27_N10
+C1L103 = VCC;
+
+
+--C1L185 is LCD_Display:inst1|state.reset1~feeder at LCCOMB_X21_Y27_N16
+C1L185 = VCC;
+
+
