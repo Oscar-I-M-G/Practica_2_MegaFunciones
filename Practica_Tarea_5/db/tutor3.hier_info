@@ -1,0 +1,361 @@
+|tutor3
+AUS <= DEC_7SEG:inst11.segment_a
+SW2_UPDOWN => DEBOUNCE:inst3.pb
+CLK => clk_div:inst2.clock_48Mhz
+SW0_INIT => DEBOUNCE:inst8.pb
+KEY3_CLR => DEBOUNCE:inst9.pb
+KEY0_LOAD => DEBOUNCE:inst10.pb
+datos[10] => lpm_counter0:inst5.data[0]
+datos[11] => lpm_counter0:inst5.data[1]
+datos[12] => lpm_counter0:inst5.data[2]
+datos[13] => lpm_counter0:inst5.data[3]
+datos[14] => lmp_counter1:inst12.data[0]
+datos[15] => lmp_counter1:inst12.data[1]
+datos[16] => lmp_counter1:inst12.data[2]
+datos[17] => lmp_counter1:inst12.data[3]
+BUS <= DEC_7SEG:inst11.segment_b
+CUS <= DEC_7SEG:inst11.segment_c
+DUS <= DEC_7SEG:inst11.segment_d
+EUS <= DEC_7SEG:inst11.segment_e
+FUS <= DEC_7SEG:inst11.segment_f
+GUS <= DEC_7SEG:inst11.segment_g
+ADS <= DEC_7SEG:inst1.segment_a
+BDS <= DEC_7SEG:inst1.segment_b
+CDS <= DEC_7SEG:inst1.segment_c
+DDS <= DEC_7SEG:inst1.segment_d
+EDS <= DEC_7SEG:inst1.segment_e
+FDS <= DEC_7SEG:inst1.segment_f
+GDS <= DEC_7SEG:inst1.segment_g
+
+
+|tutor3|DEC_7SEG:inst11
+hex_digit[0] => Mux0.IN19
+hex_digit[0] => Mux1.IN19
+hex_digit[0] => Mux2.IN19
+hex_digit[0] => Mux3.IN19
+hex_digit[0] => Mux4.IN19
+hex_digit[0] => Mux5.IN19
+hex_digit[0] => Mux6.IN19
+hex_digit[1] => Mux0.IN18
+hex_digit[1] => Mux1.IN18
+hex_digit[1] => Mux2.IN18
+hex_digit[1] => Mux3.IN18
+hex_digit[1] => Mux4.IN18
+hex_digit[1] => Mux5.IN18
+hex_digit[1] => Mux6.IN18
+hex_digit[2] => Mux0.IN17
+hex_digit[2] => Mux1.IN17
+hex_digit[2] => Mux2.IN17
+hex_digit[2] => Mux3.IN17
+hex_digit[2] => Mux4.IN17
+hex_digit[2] => Mux5.IN17
+hex_digit[2] => Mux6.IN17
+hex_digit[3] => Mux0.IN16
+hex_digit[3] => Mux1.IN16
+hex_digit[3] => Mux2.IN16
+hex_digit[3] => Mux3.IN16
+hex_digit[3] => Mux4.IN16
+hex_digit[3] => Mux5.IN16
+hex_digit[3] => Mux6.IN16
+segment_a <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+segment_b <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+segment_c <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+segment_d <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+segment_e <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+segment_f <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+segment_g <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|lmp_counter1:inst12
+aclr => lpm_counter:LPM_COUNTER_component.aclr
+aload => lpm_counter:LPM_COUNTER_component.aload
+cin => lpm_counter:LPM_COUNTER_component.cin
+clock => lpm_counter:LPM_COUNTER_component.clock
+data[0] => lpm_counter:LPM_COUNTER_component.data[0]
+data[1] => lpm_counter:LPM_COUNTER_component.data[1]
+data[2] => lpm_counter:LPM_COUNTER_component.data[2]
+data[3] => lpm_counter:LPM_COUNTER_component.data[3]
+updown => lpm_counter:LPM_COUNTER_component.updown
+q[0] <= lpm_counter:LPM_COUNTER_component.q[0]
+q[1] <= lpm_counter:LPM_COUNTER_component.q[1]
+q[2] <= lpm_counter:LPM_COUNTER_component.q[2]
+q[3] <= lpm_counter:LPM_COUNTER_component.q[3]
+
+
+|tutor3|lmp_counter1:inst12|lpm_counter:LPM_COUNTER_component
+clock => cntr_q3i:auto_generated.clock
+clk_en => ~NO_FANOUT~
+cnt_en => ~NO_FANOUT~
+updown => cntr_q3i:auto_generated.updown
+aclr => cntr_q3i:auto_generated.aclr
+aset => ~NO_FANOUT~
+aconst => ~NO_FANOUT~
+aload => cntr_q3i:auto_generated.aload
+sclr => ~NO_FANOUT~
+sset => ~NO_FANOUT~
+sconst => ~NO_FANOUT~
+sload => ~NO_FANOUT~
+data[0] => cntr_q3i:auto_generated.data[0]
+data[1] => cntr_q3i:auto_generated.data[1]
+data[2] => cntr_q3i:auto_generated.data[2]
+data[3] => cntr_q3i:auto_generated.data[3]
+cin => cntr_q3i:auto_generated.cin
+q[0] <= cntr_q3i:auto_generated.q[0]
+q[1] <= cntr_q3i:auto_generated.q[1]
+q[2] <= cntr_q3i:auto_generated.q[2]
+q[3] <= cntr_q3i:auto_generated.q[3]
+cout <= <GND>
+eq[0] <= <GND>
+eq[1] <= <GND>
+eq[2] <= <GND>
+eq[3] <= <GND>
+eq[4] <= <GND>
+eq[5] <= <GND>
+eq[6] <= <GND>
+eq[7] <= <GND>
+eq[8] <= <GND>
+eq[9] <= <GND>
+eq[10] <= <GND>
+eq[11] <= <GND>
+eq[12] <= <GND>
+eq[13] <= <GND>
+eq[14] <= <GND>
+eq[15] <= <GND>
+
+
+|tutor3|lmp_counter1:inst12|lpm_counter:LPM_COUNTER_component|cntr_q3i:auto_generated
+aclr => aclr_actual.IN0
+aclr => effective_clrn[3].IN0
+aclr => effective_clrn[2].IN0
+aclr => effective_clrn[1].IN0
+aclr => effective_clrn[0].IN0
+aclr => _.IN0
+aload => aclr_actual.IN1
+aload => _.IN0
+aload => _.IN0
+cin => counter_comb_bita0.CIN
+clock => counter_reg_bit1a[3].CLK
+clock => counter_reg_bit1a[2].CLK
+clock => counter_reg_bit1a[1].CLK
+clock => counter_reg_bit1a[0].CLK
+data[0] => _.IN1
+data[0] => a_data[0].IN1
+data[1] => _.IN1
+data[1] => a_data[1].IN1
+data[2] => _.IN1
+data[2] => a_data[2].IN1
+data[3] => _.IN1
+data[3] => a_data[3].IN1
+q[0] <= safe_q[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= safe_q[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= safe_q[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= safe_q[3].DB_MAX_OUTPUT_PORT_TYPE
+updown => counter_comb_bita3.IN1
+updown => counter_comb_bita2.IN1
+updown => counter_comb_bita1.IN1
+updown => counter_comb_bita0.IN1
+
+
+|tutor3|debounce:inst3
+pb => SHIFT_PB[3].DATAIN
+clock_100Hz => pb_debounced~reg0.CLK
+clock_100Hz => SHIFT_PB[0].CLK
+clock_100Hz => SHIFT_PB[1].CLK
+clock_100Hz => SHIFT_PB[2].CLK
+clock_100Hz => SHIFT_PB[3].CLK
+pb_debounced <= pb_debounced~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|clk_div:inst2
+clock_48Mhz => clock_1Hz_reg.CLK
+clock_48Mhz => clock_10Hz_reg.CLK
+clock_48Mhz => clock_100hz_reg.CLK
+clock_48Mhz => clock_1Khz_reg.CLK
+clock_48Mhz => clock_10Khz_reg.CLK
+clock_48Mhz => clock_100Khz_reg.CLK
+clock_48Mhz => clock_1Mhz_reg.CLK
+clock_48Mhz => clock_1Mhz_int.CLK
+clock_48Mhz => count_1Mhz[0].CLK
+clock_48Mhz => count_1Mhz[1].CLK
+clock_48Mhz => count_1Mhz[2].CLK
+clock_48Mhz => count_1Mhz[3].CLK
+clock_48Mhz => count_1Mhz[4].CLK
+clock_48Mhz => count_1Mhz[5].CLK
+clock_48Mhz => count_1Mhz[6].CLK
+clock_48Mhz => clock_1Hz~reg0.CLK
+clock_48Mhz => clock_10Hz~reg0.CLK
+clock_48Mhz => clock_100Hz~reg0.CLK
+clock_48Mhz => clock_1KHz~reg0.CLK
+clock_48Mhz => clock_10KHz~reg0.CLK
+clock_48Mhz => clock_100KHz~reg0.CLK
+clock_48Mhz => clock_1MHz~reg0.CLK
+clock_1MHz <= clock_1MHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_100KHz <= clock_100KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_10KHz <= clock_10KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_1KHz <= clock_1KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_100Hz <= clock_100Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_10Hz <= clock_10Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_1Hz <= clock_1Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|lpm_counter0:inst5
+aclr => lpm_counter:LPM_COUNTER_component.aclr
+aload => lpm_counter:LPM_COUNTER_component.aload
+clk_en => lpm_counter:LPM_COUNTER_component.clk_en
+clock => lpm_counter:LPM_COUNTER_component.clock
+data[0] => lpm_counter:LPM_COUNTER_component.data[0]
+data[1] => lpm_counter:LPM_COUNTER_component.data[1]
+data[2] => lpm_counter:LPM_COUNTER_component.data[2]
+data[3] => lpm_counter:LPM_COUNTER_component.data[3]
+updown => lpm_counter:LPM_COUNTER_component.updown
+cout <= lpm_counter:LPM_COUNTER_component.cout
+q[0] <= lpm_counter:LPM_COUNTER_component.q[0]
+q[1] <= lpm_counter:LPM_COUNTER_component.q[1]
+q[2] <= lpm_counter:LPM_COUNTER_component.q[2]
+q[3] <= lpm_counter:LPM_COUNTER_component.q[3]
+
+
+|tutor3|lpm_counter0:inst5|lpm_counter:LPM_COUNTER_component
+clock => cntr_7si:auto_generated.clock
+clk_en => cntr_7si:auto_generated.clk_en
+cnt_en => ~NO_FANOUT~
+updown => cntr_7si:auto_generated.updown
+aclr => cntr_7si:auto_generated.aclr
+aset => ~NO_FANOUT~
+aconst => ~NO_FANOUT~
+aload => cntr_7si:auto_generated.aload
+sclr => ~NO_FANOUT~
+sset => ~NO_FANOUT~
+sconst => ~NO_FANOUT~
+sload => ~NO_FANOUT~
+data[0] => cntr_7si:auto_generated.data[0]
+data[1] => cntr_7si:auto_generated.data[1]
+data[2] => cntr_7si:auto_generated.data[2]
+data[3] => cntr_7si:auto_generated.data[3]
+cin => ~NO_FANOUT~
+q[0] <= cntr_7si:auto_generated.q[0]
+q[1] <= cntr_7si:auto_generated.q[1]
+q[2] <= cntr_7si:auto_generated.q[2]
+q[3] <= cntr_7si:auto_generated.q[3]
+cout <= cntr_7si:auto_generated.cout
+eq[0] <= <GND>
+eq[1] <= <GND>
+eq[2] <= <GND>
+eq[3] <= <GND>
+eq[4] <= <GND>
+eq[5] <= <GND>
+eq[6] <= <GND>
+eq[7] <= <GND>
+eq[8] <= <GND>
+eq[9] <= <GND>
+eq[10] <= <GND>
+eq[11] <= <GND>
+eq[12] <= <GND>
+eq[13] <= <GND>
+eq[14] <= <GND>
+eq[15] <= <GND>
+
+
+|tutor3|lpm_counter0:inst5|lpm_counter:LPM_COUNTER_component|cntr_7si:auto_generated
+aclr => aclr_actual.IN0
+aclr => effective_clrn[3].IN0
+aclr => effective_clrn[2].IN0
+aclr => effective_clrn[1].IN0
+aclr => effective_clrn[0].IN0
+aclr => _.IN0
+aload => aclr_actual.IN1
+aload => _.IN0
+aload => _.IN0
+clk_en => counter_reg_bit1a[3].IN0
+clock => counter_reg_bit1a[3].CLK
+clock => counter_reg_bit1a[2].CLK
+clock => counter_reg_bit1a[1].CLK
+clock => counter_reg_bit1a[0].CLK
+cout <= cout_actual.DB_MAX_OUTPUT_PORT_TYPE
+data[0] => _.IN1
+data[0] => a_data[0].IN1
+data[1] => _.IN1
+data[1] => a_data[1].IN1
+data[2] => _.IN1
+data[2] => a_data[2].IN1
+data[3] => _.IN1
+data[3] => a_data[3].IN1
+q[0] <= safe_q[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= safe_q[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= safe_q[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= safe_q[3].DB_MAX_OUTPUT_PORT_TYPE
+updown => counter_comb_bita3.IN1
+updown => counter_comb_bita2.IN1
+updown => counter_comb_bita1.IN1
+updown => counter_comb_bita0.IN1
+updown => cout_actual.IN1
+
+
+|tutor3|debounce:inst8
+pb => SHIFT_PB[3].DATAIN
+clock_100Hz => pb_debounced~reg0.CLK
+clock_100Hz => SHIFT_PB[0].CLK
+clock_100Hz => SHIFT_PB[1].CLK
+clock_100Hz => SHIFT_PB[2].CLK
+clock_100Hz => SHIFT_PB[3].CLK
+pb_debounced <= pb_debounced~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|debounce:inst9
+pb => SHIFT_PB[3].DATAIN
+clock_100Hz => pb_debounced~reg0.CLK
+clock_100Hz => SHIFT_PB[0].CLK
+clock_100Hz => SHIFT_PB[1].CLK
+clock_100Hz => SHIFT_PB[2].CLK
+clock_100Hz => SHIFT_PB[3].CLK
+pb_debounced <= pb_debounced~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|debounce:inst10
+pb => SHIFT_PB[3].DATAIN
+clock_100Hz => pb_debounced~reg0.CLK
+clock_100Hz => SHIFT_PB[0].CLK
+clock_100Hz => SHIFT_PB[1].CLK
+clock_100Hz => SHIFT_PB[2].CLK
+clock_100Hz => SHIFT_PB[3].CLK
+pb_debounced <= pb_debounced~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|tutor3|DEC_7SEG:inst1
+hex_digit[0] => Mux0.IN19
+hex_digit[0] => Mux1.IN19
+hex_digit[0] => Mux2.IN19
+hex_digit[0] => Mux3.IN19
+hex_digit[0] => Mux4.IN19
+hex_digit[0] => Mux5.IN19
+hex_digit[0] => Mux6.IN19
+hex_digit[1] => Mux0.IN18
+hex_digit[1] => Mux1.IN18
+hex_digit[1] => Mux2.IN18
+hex_digit[1] => Mux3.IN18
+hex_digit[1] => Mux4.IN18
+hex_digit[1] => Mux5.IN18
+hex_digit[1] => Mux6.IN18
+hex_digit[2] => Mux0.IN17
+hex_digit[2] => Mux1.IN17
+hex_digit[2] => Mux2.IN17
+hex_digit[2] => Mux3.IN17
+hex_digit[2] => Mux4.IN17
+hex_digit[2] => Mux5.IN17
+hex_digit[2] => Mux6.IN17
+hex_digit[3] => Mux0.IN16
+hex_digit[3] => Mux1.IN16
+hex_digit[3] => Mux2.IN16
+hex_digit[3] => Mux3.IN16
+hex_digit[3] => Mux4.IN16
+hex_digit[3] => Mux5.IN16
+hex_digit[3] => Mux6.IN16
+segment_a <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+segment_b <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+segment_c <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+segment_d <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+segment_e <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+segment_f <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+segment_g <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+
