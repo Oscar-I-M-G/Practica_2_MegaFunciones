@@ -1,0 +1,84 @@
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+# Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# File: C:\Users\Ivan\Desktop\Proyecto_Megafunciones\Practica_Tarea_6\tutor3.csv
+# Generated on: Mon Mar 18 00:28:44 2024
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus II software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Differential Pair
+ADH,Output,PIN_T2,1,B1_N0,PIN_G14,,,,
+ADM,Output,PIN_Y23,6,B6_N1,PIN_C12,,,,
+ADS,Output,PIN_V20,6,B6_N1,PIN_V20,,,,
+AUH,Output,PIN_U9,1,B1_N0,PIN_B16,,,,
+AUM,Output,PIN_AB23,6,B6_N1,PIN_AA15,,,,
+AUS,Output,PIN_AF10,8,B8_N0,PIN_AF10,,,,
+BDH,Output,PIN_P6,1,B1_N0,PIN_C15,,,,
+BDM,Output,PIN_AA25,6,B6_N1,PIN_F14,,,,
+BDS,Output,PIN_V21,6,B6_N1,PIN_V21,,,,
+BUH,Output,PIN_U1,1,B1_N0,PIN_N23,,,,
+BUM,Output,PIN_V22,6,B6_N1,PIN_E15,,,,
+BUS,Output,PIN_AB12,8,B8_N0,PIN_AB12,,,,
+CDH,Output,PIN_P7,1,B1_N0,PIN_D15,,,,
+CDM,Output,PIN_AA26,6,B6_N1,PIN_B14,,,,
+CDS,Output,PIN_W21,6,B6_N1,PIN_W21,,,,
+CLK,Input,PIN_N2,2,B2_N1,PIN_N2,,,,
+CUH,Output,PIN_U2,1,B1_N0,PIN_H16,,,,
+CUM,Output,PIN_AC25,6,B6_N1,PIN_AB15,,,,
+CUS,Output,PIN_AC12,8,B8_N0,PIN_AC12,,,,
+datos[17],Input,PIN_V2,1,B1_N0,PIN_V2,,,,
+datos[16],Input,PIN_V1,1,B1_N0,PIN_V1,,,,
+datos[15],Input,PIN_U4,1,B1_N0,PIN_U4,,,,
+datos[14],Input,PIN_U3,1,B1_N0,PIN_U3,,,,
+datos[13],Input,PIN_T7,1,B1_N0,PIN_T7,,,,
+datos[12],Input,PIN_P2,1,B1_N0,PIN_P2,,,,
+datos[11],Input,PIN_P1,1,B1_N0,PIN_P1,,,,
+datos[10],Input,PIN_N1,2,B2_N1,PIN_N1,,,,
+datos[9],Input,PIN_A13,4,B4_N1,PIN_C11,,,,
+datos[8],Input,PIN_B13,4,B4_N1,PIN_AA13,,,,
+datos[7],Input,PIN_C13,3,B3_N0,PIN_B11,,,,
+datos[6],Input,PIN_AC13,8,B8_N0,PIN_F12,,,,
+datos[5],Input,PIN_AD13,8,B8_N0,PIN_AE16,,,,
+datos[4],Input,PIN_AF14,7,B7_N1,PIN_P23,,,,
+datos[3],Input,PIN_AE14,7,B7_N1,PIN_C16,,,,
+datos[2],Input,PIN_P25,6,B6_N0,PIN_B17,,,,
+DDH,Output,PIN_T9,1,B1_N0,PIN_B15,,,,
+DDM,Output,PIN_Y26,6,B6_N1,PIN_D14,,,,
+DDS,Output,PIN_Y22,6,B6_N1,PIN_Y22,,,,
+DUH,Output,PIN_T4,1,B1_N0,PIN_Y13,,,,
+DUM,Output,PIN_AC26,6,B6_N1,PIN_N24,,,,
+DUS,Output,PIN_AD11,8,B8_N0,PIN_AD11,,,,
+EDH,Output,PIN_R5,1,B1_N0,PIN_AC14,,,,
+EDM,Output,PIN_Y25,6,B6_N1,PIN_A14,,,,
+EDS,Output,PIN_AA24,6,B6_N1,PIN_AA24,,,,
+EUH,Output,PIN_R7,1,B1_N0,PIN_Y15,,,,
+EUM,Output,PIN_AB26,6,B6_N1,PIN_AC15,,,,
+EUS,Output,PIN_AE11,8,B8_N0,PIN_AE11,,,,
+FDH,Output,PIN_R4,1,B1_N0,PIN_G13,,,,
+FDM,Output,PIN_U22,6,B6_N1,PIN_B12,,,,
+FDS,Output,PIN_AA23,6,B6_N1,PIN_AA23,,,,
+FUH,Output,PIN_R6,1,B1_N0,PIN_AA14,,,,
+FUM,Output,PIN_AB25,6,B6_N1,PIN_D16,,,,
+FUS,Output,PIN_V14,8,B8_N0,PIN_V14,,,,
+GDH,Output,PIN_R3,1,B1_N0,PIN_F13,,,,
+GDM,Output,PIN_W24,6,B6_N1,PIN_J10,,,,
+GDS,Output,PIN_AB24,6,B6_N1,PIN_AB24,,,,
+GUH,Output,PIN_T3,1,B1_N0,PIN_H15,,,,
+GUM,Output,PIN_Y24,6,B6_N1,PIN_M25,,,,
+GUS,Output,PIN_V13,8,B8_N0,PIN_V13,,,,
+KEY0_LOAD,Input,PIN_G26,5,B5_N0,PIN_G26,,,,
+KEY3_CLR,Input,PIN_W26,6,B6_N1,PIN_W26,,,,
+SW0_INIT,Input,PIN_N25,5,B5_N1,PIN_N25,,,,
+SW2_UPDOWN,Input,PIN_N26,5,B5_N1,PIN_P25,,,,

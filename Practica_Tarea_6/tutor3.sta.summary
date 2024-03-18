@@ -1,0 +1,285 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_1Hz'
+Slack : -12.176
+TNS   : -176.652
+
+Type  : Slow Model Setup 'CLK'
+Slack : -1.208
+TNS   : -8.942
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_100Hz'
+Slack : -0.477
+TNS   : -1.005
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_10Hz_reg'
+Slack : -0.241
+TNS   : -0.291
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_100Khz_reg'
+Slack : -0.231
+TNS   : -0.280
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_100hz_reg'
+Slack : -0.199
+TNS   : -0.266
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_1Mhz_reg'
+Slack : -0.075
+TNS   : -0.147
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_10Khz_reg'
+Slack : -0.069
+TNS   : -0.148
+
+Type  : Slow Model Setup 'clk_div:inst2|clock_1Khz_reg'
+Slack : -0.063
+TNS   : -0.146
+
+Type  : Slow Model Setup 'debounce:inst8|pb_debounced'
+Slack : 0.379
+TNS   : 0.000
+
+Type  : Slow Model Hold 'CLK'
+Slack : -2.105
+TNS   : -2.140
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_1Hz'
+Slack : -0.081
+TNS   : -0.324
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_100Khz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_100hz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_10Hz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_10Khz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_1Khz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_1Mhz_reg'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'debounce:inst8|pb_debounced'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_div:inst2|clock_100Hz'
+Slack : 0.522
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'debounce:inst10|pb_debounced'
+Slack : -1.450
+TNS   : -14.696
+
+Type  : Slow Model Recovery 'clk_div:inst2|clock_1Hz'
+Slack : -1.069
+TNS   : -19.232
+
+Type  : Slow Model Removal 'clk_div:inst2|clock_1Hz'
+Slack : -0.757
+TNS   : -8.992
+
+Type  : Slow Model Removal 'debounce:inst10|pb_debounced'
+Slack : 0.479
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'CLK'
+Slack : -1.380
+TNS   : -18.380
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_1Hz'
+Slack : -0.500
+TNS   : -24.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_100Hz'
+Slack : -0.500
+TNS   : -20.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_100Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_100hz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_10Hz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_10Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_1Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_div:inst2|clock_1Mhz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Slow Model Minimum Pulse Width 'debounce:inst8|pb_debounced'
+Slack : -0.500
+TNS   : -1.000
+
+Type  : Slow Model Minimum Pulse Width 'debounce:inst10|pb_debounced'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_1Hz'
+Slack : -4.740
+TNS   : -64.412
+
+Type  : Fast Model Setup 'CLK'
+Slack : -0.074
+TNS   : -0.518
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_100Hz'
+Slack : 0.324
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_100Khz_reg'
+Slack : 0.425
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_10Hz_reg'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_100hz_reg'
+Slack : 0.444
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_1Mhz_reg'
+Slack : 0.503
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_1Khz_reg'
+Slack : 0.507
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk_div:inst2|clock_10Khz_reg'
+Slack : 0.508
+TNS   : 0.000
+
+Type  : Fast Model Setup 'debounce:inst8|pb_debounced'
+Slack : 0.665
+TNS   : 0.000
+
+Type  : Fast Model Hold 'CLK'
+Slack : -1.405
+TNS   : -1.509
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_1Hz'
+Slack : -0.218
+TNS   : -2.394
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_100Khz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_100hz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_10Hz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_10Khz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_1Khz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_1Mhz_reg'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'debounce:inst8|pb_debounced'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_div:inst2|clock_100Hz'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'debounce:inst10|pb_debounced'
+Slack : -0.436
+TNS   : -3.199
+
+Type  : Fast Model Recovery 'clk_div:inst2|clock_1Hz'
+Slack : -0.046
+TNS   : -0.184
+
+Type  : Fast Model Removal 'clk_div:inst2|clock_1Hz'
+Slack : -0.617
+TNS   : -8.504
+
+Type  : Fast Model Removal 'debounce:inst10|pb_debounced'
+Slack : 0.588
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLK'
+Slack : -1.380
+TNS   : -18.380
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_1Hz'
+Slack : -0.500
+TNS   : -24.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_100Hz'
+Slack : -0.500
+TNS   : -20.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_100Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_100hz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_10Hz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_10Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_1Khz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_div:inst2|clock_1Mhz_reg'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Minimum Pulse Width 'debounce:inst8|pb_debounced'
+Slack : -0.500
+TNS   : -1.000
+
+Type  : Fast Model Minimum Pulse Width 'debounce:inst10|pb_debounced'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------
